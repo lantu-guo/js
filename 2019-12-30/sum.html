@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //任意数求和
+    // let total=null;
+    // function fn(num){
+    //     for(var i=0;i<arguments.length;i++){
+    //         let num=arguments[i];
+    //         if(!isNaN(num)){
+    //             total+=num;
+    //         }
+    //     }
+    //     return total;
+    // }
+    // console.log(fn(true,false,true,1,null));   //3
+
+    //1-100之间能被3和5整除的数的和
+    function fn(num){
+        if(num>100){
+            return 0;
+        }
+        if(num%15===0){
+            return num+fn(num+1);
+        }
+        return fn(num+1);
+    }
+    console.log(fn(1));
+    
+    
+    </script>
+</body>
+</html>
