@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>图片点击事件--pig</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .box{
+        width: 500px;
+        height: 500px;
+        margin: 0 auto;
+    }
+    .box p{
+        cursor: pointer;
+    }
+    .box img{
+        display: block;
+    }
+    </style>
+</head>
+<body>
+    <div class="box" id="box" >
+        <p id="hid" style="text-align: center;font-size: 30px;color: red;">显示</p>
+        <img id="pig" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1573150275632&di=8a7f6c6ddf4656c1a67b519bb7244be9&imgtype=jpg&src=http%3A%2F%2Fimgsa.baidu.com%2Fexp%2Fw%3D500%2Fsign%3Df0c47dd191504fc2a25fb005d5dfe7f0%2F6d81800a19d8bc3e6edff713888ba61ea9d34510.jpg" alt="" style="display: none;">
+
+    </div>
+
+    <script>
+        let hid=document.getElementById('hid');
+        let pid=document.getElementById('pig');
+
+        hid.onclick=function(){
+            let b=pig.style.display;
+            if(b==='none'){
+                pig.style.display='block';
+                // console.log(hid.innerHTML);
+                // console.log(pig.style.display);
+                hid.innerHTML='隐藏';
+            }
+            else{
+                pig.style.display='none';
+                hid.innerHTML='显示';
+                // console.log(hid.innerHTML);
+                // console.log(pig.style.display);
+            }
+
+        }
+       
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //字符串转数字
+    console.log(Number('12.3'))   //12.3
+    console.log(Number('12.2.2'))   //NaN 第二个.不是有效数字
+    console.log(Number('a'))     //NaN,a不是有效数字
+    console.log(Number(''));  //0 空字符串转换是0
+    console.log(Number('  12  '))  //12 去掉左右空格
+    console.log(Number('  1  2  '))  //NaN 中间的空格算非有效数字，显示NaN
+    console.log(Number(true));    //1
+    console.log(Number(false));    //0
+    //null和undefined转数字
+    console.log(Number(null));    //0
+    console.log(Number(undefined));   //NaN
+    console.log(Number(-12))
+
+    var num=NaN;
+    num = undefined;
+    console.log(parseInt(Number(isNaN(num))))  //1
+
+    </script>
+</body>
+</html>

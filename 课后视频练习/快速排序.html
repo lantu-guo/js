@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    /*
+    快速排序
+    1、从原数组中挑选一个值作为基础，然后把这一项在原数组中删除
+    2、创建两个空数组，循环数组的每一项，和基准进行比较，如果小于基准，就放在左边数组里，反值就放在右边数组里
+    3、不断重复1和2步骤（递归），直到数组的length小于等于1为止
+    4、最后从左往右依次把数组和基准拼接到一起，就是排好序的数组
+    */
+    let ary=[3,34,2,33,55,44,35,678,34,234,37,56,49];
+
+    function newAry(ary){
+        if(ary.length<=1){
+            return ary;
+        }
+
+        let midIndex=Math.round(ary.length/2);
+        let midValue=ary.splice(midIndex,1);
+
+        let leftAry=[];
+        let rightAry=[];
+
+        for(var i=0;i<ary.length;i++){
+            var cur=ary[i];
+            if(cur<midValue){
+                leftAry.push(cur);
+            }
+            else{
+                rightAry.push(cur);
+            }
+        }
+        return newAry(leftAry).concat(midValue,newAry(rightAry));
+
+
+    }
+    console.log(newAry(ary));
+    
+    </script>
+</body>
+</html>

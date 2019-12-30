@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>鼠标点击变色循环</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 200px;
+            height: 200px;
+            /* background: red; */
+            margin: 20px auto;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="box" class="boxss" style="background: red;">1111</div>
+    <script>
+        let box=document.getElementById('box')
+        console.log(box)
+       box.onclick=function(){
+            let color=box.style.background
+            if(color==='red'){
+                console.log(box.style.background)
+                box.style.background='yellow'
+            }
+            else if(color==='yellow'){
+                console.log(box.style.background)
+                box.style.background='green'
+            }
+            else if(color==='green'){
+                console.log(box.style.background)
+                box.style.background='blue'
+            }
+            else{
+                console.log(box.style.background)
+                box.style.background='red'
+            }
+       }
+        
+    </script>
+</body>
+
+</html>

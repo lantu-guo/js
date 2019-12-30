@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // 利用对象的属性名如果已经存在，那属性值就不是undefined的特点
+    let ary = [23, 55, 23, 34, 23, 34, 23];  //[23,55,34]
+
+    
+    function unique(ary){  
+        // 创建一个空对象，
+         // 循环数组，把数组的每一项既当做属性名，又当做属性值作为键值对存储到对象中,但是存储的时候得判断一下，这一项在对象中有没有，如果有就证明这一项在数组中是重复项   
+        let obj={};
+        for(var i=0;i<ary.length;i++){
+            if(obj[ary[i]]!==undefined){
+            //    ary[i]=ary[ary.length-1];
+            //    ary.length--;
+            //    i--;
+            ary.splice(i,1);
+            i--;
+
+            }
+            else{
+                obj[ary[i]]=ary[i];
+            }
+        }
+        return ary;
+    }
+    console.log(unique(ary));   //[23, 55, 34]
+    console.log(ary);   //[23, 55, 34]改变
+    
+    
+    </script>
+</body>
+</html>

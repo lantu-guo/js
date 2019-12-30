@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+    /*快速排序
+    1、从原数组中挑选一个值作为基础，然后把这一项在原数组中删除
+    2、创建两个空数组，循环数组的每一项，和基准进行比较，如果小于基准，就放在左边数组里，反之就放在右边数组里
+    3、不断重复1和2步骤（递归），直到数组的length小于等于1为止
+    4、最后从左往右依次把数组和基准拼接到一起，就是排好序的数组
+    */
+    let ary=[5,3,32,6,47,756,34,12,42,87,24];
+
+    function quickSort(ary){
+        if(ary.length<=1){
+            return ary;
+        }
+
+        let midIndex=Math.round(ary.length/2);  
+        //6  运用Math数学函数四舍五入（取个大概位置即可）
+        //console.log(midIndex);
+        let midItem=ary.splice(midIndex,1);
+        //console.log(midItem);  // [34]
+        //console.log(ary);  //[5, 3, 32, 6, 47, 756, 12, 42, 87, 24]
+
+        let leftAry=[];
+        let rightAry=[];
+
+        for(var i=0;i<ary.length;i++){
+            let cur=ary[i];
+            //console.log(cur);
+
+            if(cur<midItem){
+                leftAry.push(ary[i]);
+                //console.log(leftAry);
+            }
+            else{
+                rightAry.push(ary[i]);
+                //console.log(rightAry);
+            }
+
+        }
+        return quickSort(leftAry).concat(midItem,quickSort(rightAry));
+        //console.log(quickSort(leftAry).concat(midItem,quickSort(rightAry)));
+    }
+    console.log(quickSort(ary));
+    // [3, 5, 6, 12, 24, 32, 34, 42, 47, 87, 756]
+
+
+    </script>
+</body>
+
+</html>

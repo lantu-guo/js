@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //定义对象，由大括号括起来
+        //let person = {
+        //  name: 'wangwei',
+        // age: 18,
+        // height: '180cm',
+        // sex: 'man',
+        //    6: 18
+        //}
+        // console.log(person)
+        //在浏览器显示的时候，数字在上，字母在下，由大到小排列
+
+        //对象的查询
+        let monkey = {
+            name: 'sunwukong',
+            age: 555,
+            sex: 'man',
+            4: 18
+        }
+        console.log(monkey.name)
+        console.log(monkey['age'])
+        //console.log(monkey.4)   //报错,数字不能用这种方式查询
+        console.log(monkey['sex'])
+        console.log(monkey[4])
+
+        //修改
+        monkey.name = 'vvvv'
+        console.log(monkey.name)    //修改vvvv
+
+        monkey.ss = 'fff'              //没有这个属性，就是新增
+        console.log(monkey)
+
+        //删除
+        //假删除(其实就是修改属性值)
+        monkey.name = null;
+        console.log(monkey)         //浏览器显示name:null   
+
+        //真删除，彻底删除
+        delete monkey.name
+        console.log(monkey)        //name彻底没有了，删除掉了
+
+        let ary=[1,'hh','g',4]
+        console.log(ary)
+        console.log(ary[0])     //获取数组第一项
+        ary[ary.length]='kk'
+        console.log(ary)     //给数组最后一项增加属性值
+
+        ary.length=ary.length-1     //删除数组最后一项
+        console.log(ary)       
+
+        ary.length=0           //清空数组
+        console.log(ary)
+
+
+
+
+    </script>
+</body>
+
+</html>

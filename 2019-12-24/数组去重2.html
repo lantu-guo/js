@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数组去重第二种，不会造成数组塌陷</title>
+</head>
+<body>
+    <script>
+       let ary = [23, 23, 23, 34, 23, 34, 23];
+        function unique(ary){
+            // 创建一个空对象，循环数组，把数组的每一项既当做属性名，又当做属性值作为键值对存储到对象中
+            let obj = {};
+            for (var i = 0; i < ary.length; i++) {
+               var cur = ary[i];
+               obj[cur] = cur;  //向对象里增加键值对
+            }
+            console.log(obj) // {23:23,34:34}
+            //创建一个新数组，
+            //遍历对象，把对象的每一个属性值push到新数组中
+           let newAry=[];
+           for(var key in obj){
+               //key 代表每一个键值对的属性名
+               newAry.push(obj[key]);    //把obj里的每项属性值push到新数组里，原数组不变
+           }
+           return newAry;
+        }
+        console.log(unique(ary));
+        console.log(ary);
+    
+    </script>
+</body>
+</html>

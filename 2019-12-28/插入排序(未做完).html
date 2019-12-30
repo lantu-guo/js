@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    /*插入排序原理：
+目的：从小大排序
+原理：新建一个空数组,从原数组中依次拿出每一项，插入到下面的新数组中。插入的时候有一个规律：
+1、顺序：从右向左
+2、在插入的时候，拿出的这项比某项大，就直接放到某项后面
+3、如果说比到第一项了，还不大于等于，就说明了拿出的这项就是最小的，直接就放到数组的最前面即可*/
+
+let ary=[67,32,56,34,54,78,2,4];
+function insertAry(ary){
+    let handAry=[];
+    handAry.push(ary[0]);
+
+    for(var i=1;i<ary.length;i++){
+        let gradCar=ary[i];
+
+        for(var j=handAry.length-1;j>=0;j--){
+            //let next=handAry[j];
+
+            if(gradCar>handAry[j]){
+                handAry.splice(j+1,0,gradCar);
+                break;
+                //console.log(handAry);
+            }
+            else if(j===0){
+                handAry.unshift(gradCar);
+            }
+        }   
+    }
+    return handAry;
+}
+   
+  
+   console.log(insertAry(ary));  
+
+
+    
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    function fn(num){
+        if(num>100){
+            return 0;
+        }
+        if(num%(3*5)===0){           
+            return num+fn(num+1);
+        }
+        
+        return fn(num+1);
+    }
+    console.log(fn(1));    //315
+    
+    </script>
+</body>
+</html>
+
+<!-- <script>
+function fn(sum){
+    if(sum>100){
+        return sum;
+    }
+    if(sum%(3*5)===0){
+        return sum+fn(sum+1);
+    }
+    return fn(sum+1);
+}
+console.log(fn(1));
+
+</script> -->

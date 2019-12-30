@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 函数的递归：
+    含义：函数自己调用自己
+    当使用函数的递归时，一般都有终止条件；
+    -->
+    <script>
+    // let num=1;
+    // function fn(){
+    //     if(num>5){       
+    //         return
+    //     }
+    //     console.log(1);//1 1 1 1 1
+    //     num++;
+    //     fn();
+    // }
+    // fn();   //无线循环输出1
+
+
+    //实现1-5之间的和
+    //let num=0;
+    function fn(num){
+        if(num>5){
+            return 0;
+        }
+        return num+fn(num+1);
+    }
+    console.log(fn(1));
+
+    //代码运行原理：
+    //fn(1) --->15
+    //  1+fn(2)  --->1+14
+    //  f(2)---2+fn(3) --->2+12
+    //  f(2)---3+fn(4) ---->3+9
+    //  f(2)---4+fn(5) --->4+5
+    //  f(2)---5+fn(6)---->5+0
+    //  f(2)---num=6>f--->return 0;  往上反值
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var a = 'abc' + 123 + 456;     //'abc123456'
+        var b = '456' - '123';         //333
+        var c = 100 + true + 21.2 + null + undefined + "Tencent" + [] + null + false;
+        //122.2+0+NaN...
+        //NaN+"Tencent" + [] + null + false; 
+        //'NaNTencentnullfalse'
+        let d = [] + [];     //''+''-->空字符串
+        let e = [] + {};   //''+'[object Object]'--->'[object Object]'
+        let f = 1 + true + null + [3.1415926] + '小花' + [] + null + undefined;
+        //2+0+'3.1415926'+'小花'+[]+null+ undefined
+        //'23.1415926小花nullundefined'
+        let g = parseFloat("1.6px") + parseInt("1.2px") + parseInt(null).toString();
+        //1.6+1+'NaN'
+        //'2.6NaN'
+        let z = 316 * 417 + 3 + undefined;   //NaN
+        let h = !(!"Number(undefined)");     //true
+        console.log(a, b, c, d, e, f, g, z, h)
+
+        Number('')   //0
+        Number('-1')   //-1
+        Number('23.2.2')   //NaN
+        Number(null)   //0
+        Number('12px')   //NaN
+        !parseInt('')    //true
+        !!parseInt('12.5px')   //true
+        parseFloat('12.5px')   //12.5
+        isNaN('')    //false
+        isNaN('12px')    //true
+        isNaN(NaN)     //true
+        !Boolean(Number(isNaN(undefined)))    //false
+        !Boolean(!Number(!isNaN(undefined)))   //false
+
+        let n = [10, 20];
+        let m = n;
+        let x = m;
+        m[0] = 100;
+        console.log("x!!~~~~="+x)
+        x = [30, 40];
+        console.log("n~~~~="+n)
+        console.log("m~~~~="+m)
+        console.log("x~~~~="+x)
+        x[0] = 200;
+        m = x;
+        m[1] = 300;
+        n[2] = 400;
+        console.log(n, m, x)   //n=[100,20,400]   m=[200,300]   x=[200,300]
+
+
+        let ary = ['ss', 2, true, null];
+        ary.length = ary.length - 1;
+        ary[ary.length] = 'erYa';    //['ss',2,true,'erYa']
+        console.log(ary.length);    //4
+        console.log(ary['length']);     //4
+        console.log(ary[ary.length - 1]);   //'erYa'
+        console.log(ary[0])           //'ss'
+        ary.length = 0;
+        console.log(ary);       //[]
+
+    </script>
+</body>
+
+</html>

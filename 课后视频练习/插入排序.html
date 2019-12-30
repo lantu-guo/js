@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+   let ary=[1,5,34,6,35,12,56];
+   
+   function insert(ary){
+       let handAry=[];
+        handAry.push(ary[0]);
+
+        for(var i=1;i<ary.length;i++){
+            let gradCard=ary[i];
+            
+            for(var j=handAry.length-1;j>=0;j--){
+                let next=handAry[j];
+
+                if(gradCard>next){
+                    handAry.splice(j+1,0,gradCard);
+                    break;
+                }
+                else if(j===0){
+                    handAry.unshift(gradCard);
+                }
+            }
+
+        }
+       return handAry;
+   }
+   console.log(insert(ary));  //[1, 5, 6, 12, 34, 35, 56]
+   
+   
+   
+   </script>
+</body>
+</html>

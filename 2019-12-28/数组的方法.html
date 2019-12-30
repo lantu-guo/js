@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // let ary=[23,45,23];
+    // delete ary[0];
+    // console.log(ary);
+    
+    //sort
+    let ary=[12,15,9,28,10,22];
+    // ary.sort(function(a,b){
+    //     //a和b是相邻的两项
+    //     console.log(a,b);
+    //     //return b-a;     //[28, 22, 15, 12, 10, 9]降序
+    //     return a-b;   // [9, 10, 12, 15, 22, 28]升序
+    // })
+     
+    ary.sort((a,b)=>a-b);  //改写成箭头函数，升序
+    console.log(ary);    // [9, 10, 12, 15, 22, 28]
+
+    for(let i=0;i<ary.length;i++){
+        //i:当前循环这一项的索引
+        //ary[i]:根据索引获取这一项
+        console.log('索引'+i,'内容'+ary[i]);
+    }
+    
+    </script>
+</body>
+</html>

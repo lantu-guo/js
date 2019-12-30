@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+   let url='https://www.baidu.com?name=erYa&age=18&wd=千与千寻&sex=gril#index';
+
+   function ary(url){
+      let aryIndex=url.indexOf('?');
+      let aryStr=url.substring(aryIndex+1);
+      //console.log(aryStr);
+      //name=erYa&age=18&wd=千与千寻&sex=gril#index
+
+      let aryAry=aryStr.split('&');
+      //console.log(aryAry);
+      // ["name=erYa", "age=18", "wd=千与千寻", "sex=gril#index"]
+
+      let obj={};
+      for(var i=0;i<aryAry.length;i++){
+          let cur=aryAry[i];
+          let itemAry=cur.split('=');
+         // console.log(itemAry);
+          //["name", "erYa"]  
+          //["age", "18"] 
+          //["wd", "千与千寻"] 
+          //["sex", "gril#index"]
+
+          obj[itemAry[0]]=itemAry[1];
+
+      }
+      return obj;
+   }
+   console.log(ary(url));  //{name: "erYa", age: "18", wd: "千与千寻", sex: "gril#index"}
+   
+   
+   
+   </script>
+</body>
+</html>

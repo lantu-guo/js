@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- css -->
+    <div id="box">111111</div>
+    <!-- import js -->
+    <script>
+    let box=document.getElementById('box');
+    
+    let div=document.createElement('div');     //动态创建div
+    let text=document.createTextNode('222222');    //动态创建文本节点
+
+    div.appendChild(text);    //把text文本节点插入到div元素节点的末尾
+    //document.body.insertBefore(div,box);     //把div插入到box前面
+    document.body.appendChild(div);    //把div插入到body的末尾
+    //document.body.removeChild(box);    //在页面中溢出box元素
+     
+    </script>
+</body>
+</html>

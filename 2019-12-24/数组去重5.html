@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>方法3</title>
+</head>
+<body>
+    <script>
+    //原理：利用对象的属性名如果存在，那属性值就不是undefined
+    let ary = [23, 23, 23, 34, 23, 34, 23];
+    let aryy = [];
+    function unique(){
+        for(var i=0;i<ary.length;i++){
+            if(i==0){
+                aryy[i] = ary[1];
+                continue;
+            }
+            if(aryy.indexOf(ary[i]) == -1){
+                aryy.push(ary[i]);
+            }
+        }
+        return aryy;   //返回原数组，因为在原数组中操作的
+    }
+    console.log(unique(ary));     //[23,34]
+    
+    
+    
+    </script>
+</body>
+</html>

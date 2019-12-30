@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>选项卡</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+            display: flex;
+            position: relative;
+            top: 2px;
+        }
+
+        #box {
+            width: 500px;
+            margin: 20px auto;
+
+        }
+
+        ul li {
+            width: 100px;
+            height: 50px;
+            border: 2px solid #333;
+            padding: 10px;
+            box-sizing: border-box;
+            text-align: center;
+            margin-right: 20px;
+            background: darkcyan;
+            cursor: pointer;
+        }
+
+        #box>div {
+            width: 500px;
+            height: 300px;
+            text-align: center;
+            border: 2px solid #333;
+            display: none;
+            background: darkcyan;
+        }
+
+        #box>div.active {
+            display: block;
+            background: lightseagreen;
+        }
+
+        #ul li.active{
+            border-bottom-color: lightseagreen;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <ul id="ul">
+            <li class="active">1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+        <div class="active">一</div>
+        <div>二</div>
+        <div>三</div>
+    </div>
+    <script>
+        let box = document.getElementById('box');
+        let nav = document.getElementById('ul');
+        let boxList = box.getElementsByTagName('div');
+        let navList = nav.getElementsByTagName('li');
+
+        for (var i = 0; i < navList.length; i++) {
+            navList[i].myIndex = i;
+            //console.log("外面")
+            navList[i].onclick = function () {
+                //console.log("里面")
+                fn(this.myIndex);
+            }
+        }
+        //console.log(i)
+
+        function fn(index) {
+            for (var i = 0; i < navList.length; i++) {
+                navList[i].className = '';
+                boxList[i].className = '';
+            }
+            navList[index].className = 'active';
+            boxList[index].className = 'active';
+
+        }
+
+        // for(var i=0;i<navList.length;i++){
+        //     navList[i].myIndex=i;
+        //     navList[i].onclick=function(){
+        //         fn(this.myIndex);
+        //     }
+        // }
+        // function fn(index){
+        //     for (var i = 0; i < navList.length; i++) {
+        //         navList[i].className='';
+        //         boxList[i].className='';
+        //     } 
+        //     navList[index].className='active';
+        //     boxList[index].className='active';          
+        // }
+
+
+    </script>
+
+</body>
+
+</html>

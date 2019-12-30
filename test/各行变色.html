@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    ul{
+        list-style: none;
+        width: 200px;
+        line-height: 30px;
+        text-align: center;
+    }
+    ul li{
+        border: 1px solid red;
+        margin-bottom: 10px;
+    }
+    
+    </style>
+
+</head>
+<body>
+    <ul id="nav">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <!-- import js -->
+    <script>
+    let navList=document.getElementById('nav');
+    let list=navList.getElementsByTagName('li');
+
+    for(var i=0;i<list.length;i++){
+        list[i].myIndex=i;
+        if(i%2===0){
+            list[i].style.background='red';
+            list[i].myColor='red';
+        }
+        else{
+            list[i].style.background='green';
+            list[i].myColor='green';
+        }
+
+        list[i].onmouseover=function(){
+            this.style.background='pink';
+        }
+        list[i].onmouseout=function(){
+            this.style.background=this.myColor;
+        }
+
+        list[i].onclick=function(){
+            alert('我是第'+(this.myIndex+1)+'个li');
+        }
+    }
+    
+    
+    </script>
+</body>
+</html>

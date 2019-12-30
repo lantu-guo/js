@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数组去重2---空对象</title>
+</head>
+<body>
+    <script>
+    /*
+    利用对象的属性名不能重复的特点进行数组去重
+    创建一个空对象，
+    循环数组，把数组的每一项既当做属性名，又当做属性值作为键值对存储到对象中 
+    创建一个新数组，
+    遍历对象，把对象的每一个属性值push到新数组中
+    */
+    let ary = [23, 13, 23, 34, 23, 34, 23];
+
+    function unique(ary){
+        let obj={};
+
+        for(var i=0;i<ary.length;i++){
+            let cur=ary[i];  //23
+            obj[cur]=cur;   //obj[23]=23   给对象增加键值对
+        }
+        console.log(obj);   //得到的对象{13: 13, 23: 23, 34: 34}
+
+        //创建一个新数组，
+        //遍历对象，把对象的每一个属性值push到新数组中
+        let newAry=[];
+        for(var key in obj){
+            newAry.push(obj[key]);
+        }
+        return newAry;
+        // 最后得到的新数组就是去重之后的数组
+    }
+    console.log(unique(ary));   // [13, 23, 34]
+    
+    </script>
+</body>
+</html>

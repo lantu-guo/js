@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #btn {
+            cursor: pointer;
+            margin-top: 50px;
+            margin-left: 50px;
+        }
+    </style>
+</head>
+
+<body style="background-color: white;">
+    <button id="btn">点击按钮，按顺序变颜色</button>
+    <script>
+        let body = document.body;
+        let btn = document.getElementById('btn');
+        let ary = ['red', 'green', 'orange', 'blue', 'black', 'yellow'];
+
+        let i = 0;
+        //let bg = body.style.backgroundColor;
+        btn.onclick = function () {
+            i++;
+            console.log(i);
+           i>ary.length-1?i=0:null
+           //如果索引累加后比数组最大的索引都要大，让其从零开始；
+            body.style.backgroundColor = ary[i];
+           
+        }
+
+
+        //switch...case方式实现效果：
+        /*btn.onclick = function () {
+            let bg = body.style.backgroundColor;
+            switch (bg) {
+                case 'white':
+                    body.style.backgroundColor = 'red';
+                    break;
+                case 'red':
+                    body.style.backgroundColor = 'green';
+                    break;
+                case 'green':
+                    body.style.backgroundColor = 'blue';
+                    break;
+                case 'blue':
+                    body.style.backgroundColor = 'yellow';
+                    break;
+                default:
+                    body.style.backgroundColor = 'white';
+                    break;
+            }
+        }*/
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

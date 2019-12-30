@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       let a = {
+            n: 1
+        };
+        let b = a;
+        a.x = a = { // 像这种连续等于要从左往右依次赋值
+            n: 2
+        };
+        console.log(a.x)
+        console.log(b)
+       
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id='content'>
+    <button id="btn">输入</button>
+    <script>
+    let conten=document.getElementById('content');
+    let btn=document.getElementById('btn');
+
+    btn.onclick=function(){
+        //表单元素不能使用innerHTML或者innerText获取元素，只能用value来获取值
+        let value=content.value;
+       // console.log(1);
+       if(!isNaN(value) && value!==''){
+            if(value%2===0){
+                alert('这是一个偶数');
+            }
+            else{
+                alert('这是一个奇数');
+            }
+       }
+       else{
+           alert('这不是一个有效数字！请重新输入');
+       }
+       content.value='';
+    }
+    //!isNaN(value) && value!==''?(value%2===0?alert('这是一个偶数'):alert('这是一个奇数')):alert('这不是一个有效数字！请重新输入');
+    
+    </script>
+</body>
+</html>

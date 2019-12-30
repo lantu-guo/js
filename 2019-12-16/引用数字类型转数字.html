@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //引用数据类型转数字，把值转成字符串，然后在把字符串转成数字类型（浏览器内部会默认调用toString方法，这个是内部机制）
+    //普通对象转数字
+    //{name:11;}
+        //所有的普通对象转字符串都是'[object object]'
+        //所有的普通对象转数字都是NaN
+    let obj = {name:11};
+    let obj1 = {};
+    console.log(Number(obj))   //NaN
+    console.log(Number(obj1))  //NaN
+    console.log(obj1.toString())  //[object object]
+    console.log(Number( Number(obj1))) //NaN 从里往外算
+   
+
+   //数组转数字,先转字符串
+   var a = [1,2,3];
+    console.log(Number(a))  //NaN
+    console.log(a.toString())   //1,2,3
+
+    var ary = [1,{},[],'we']
+    // 转换成字符串 1,[object object] , 空 , we
+    console.log(ary.toString()) 
+    console.log(Number(ary))   //NaN
+    console.log(true.toString())   //true是字符串形式
+    console.log(Number([1]))   //1
+    console.log(Number([12,13]))  //---> 12,13---> NaN
+    console.log(Number({}))   //0
+
+    console.log('1'== 1)   //内部机制先转换成数字，然后在比较，结果是true
+
+    console.log(Number(Number('Number(13)')))  //单引号包着的都是字符串，结果是NaN
+    console.log(Number([[[]]]))   //0
+    //分解
+    console.log([[]].toString())  //空
+    console.log(Number())   //0
+    
+    console.log(Number('h'))  //NaN
+    console.log(Number({}))    //NaN
+    console.log(Number([{}]))  //NaN
+    console.log(Number(Number(true)))   //1
+    console.log(Number([true]))  //NaN
+    console.log(Number([1,'d',[],'true']))  //NaN
+    //parseInt parseFloat是把字符串转成数字
+    //parseInt 从左向右依次查找有效数字，一旦发现非有效数字，就立即停止查找，把之前找到的数字返回（parseInt不识别小数点，parseFloat识别一位小数点）
+    //如果输入的值不是字符串类型的，会先把他转换成字符串在运算
+    console.log(parseInt('12.5'))
+    console.log(parseFloat('12.4.5'))   //12.4
+    console.log(parseInt(true))  //分解 -->'true'-->NaN
+    console.log(parseFloat(null))   //-->'true'-->NaN
+    console.log(parseFloat([1]))   //-->'1'-->1
+    console.log(parseFloat([1.5,4]))  //-->'1.5,4'-->1.5
+    console.log(parseFloat('12dafasfadfasfas'))  //12
+    console.log(parseFloat('[12.4,5]'))   //NaN 字符串从左向右查找
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>方法3</title>
+</head>
+<body>
+    <script>
+    //原理：利用对象的属性名如果存在，那属性值就不是undefined
+    let ary = [23, 23, 23, 34, 23, 34, 23];
+    function unique(){
+        let obj={};
+        for(var i=0;i<ary.length;i++){
+            if(obj[ary[i]]!==undefined){
+                //如果此条件成立，这一项就是在数组中重复
+                //把这一项在原数组中删除
+                ary.splice(i,1);    //也会造成数组塌陷，所以要加i--
+                i--;
+            }
+            else{
+                //给新对象增加键值对
+                obj[ary[i]]=ary[i];
+            }
+        }
+        return ary;   //返回原数组，因为在原数组中操作的
+    }
+    console.log(unique(ary));
+    
+    
+    
+    </script>
+</body>
+</html>

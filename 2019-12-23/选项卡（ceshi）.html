@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- css样式 -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+            display: flex;
+        }
+
+        #box {
+            width: 500px;
+        }
+
+        ul>li {
+            width: 100px;
+            height: 50px;
+            line-height: 50px;
+            border: 1px solid black;
+            box-sizing: border-box;
+            text-align: center;
+            position: relative;
+            top: 1px;
+        }
+
+        #box>div {
+            width: 500px;
+            height: 300px;
+            border: 1px solid black;
+            line-height: 300px;
+            text-align: center;
+            font-size: 40px;
+            display: none;
+        }
+
+        #box ul li.active {
+            border-bottom-color: #fff;
+        }
+
+        #box div.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <ul id="ulList">
+            <li class="active">1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+        <div class="boxList active">一</div>
+        <div>二</div>
+        <div>三</div>
+    </div>
+
+    <!-- import  js -->
+    <script>
+        let box = document.getElementById('box');
+        let ulList = document.getElementById('ulList');
+        let liList = ulList.getElementsByTagName('li');
+        let boxDiv = box.getElementsByTagName('div');
+
+        for (var i = 0; i < liList.length; i++) {
+            liList[i].myIndex = i;
+            liList[i].onclick = function () {
+                fn(this.myIndex);
+            }
+        }
+
+    function fn(index){
+        for(var i=0;i<liList.length;i++){
+            liList[i].className='';
+            boxDiv[i].className='';
+        }
+        liList[index].className='active';
+        boxDiv[index].className='active';
+    }
+
+
+
+
+    </script>
+
+</body>
+
+</html>

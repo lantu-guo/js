@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    #box{
+        width: 500px;
+        margin: 0 auto;
+    }
+    ul{
+        list-style: none;
+        display: flex;
+    }
+    ul li{
+        width: 100px;
+        line-height: 35px;
+        font-weight: bold;
+        border: 1px solid red;
+        position: relative;
+        top: 1px;
+    }
+    #box div{
+        border: 1px solid red;
+        height: 300px;
+        display: none;
+    }
+    ul .active{
+        border-bottom: 1px solid #fff;
+    }
+    #box .active{
+        display: block;
+    }
+    
+    </style>
+</head>
+<body>
+    <div id="box">
+        <ul id="nav">
+            <li class="active">1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+        <div class="active">英语</div>
+        <div>数学</div>
+        <div>语文</div>
+    </div>
+
+    <script>
+    let box=document.getElementById('box');
+    let nav=document.getElementById('nav');
+    let list=nav.getElementsByTagName('li');
+    let btn=box.getElementsByTagName('div');
+
+    for(var i=0;i<list.length;i++){
+        list[i].myIndex=i;
+        console.log(i);
+        list[i].onclick=function(){
+            fn(this.myIndex);
+        }
+    }
+    function fn(index){
+       for(var i=0;i<list.length;i++){
+           list[i].className='';
+           btn[i].className='';
+       }
+       list[index].className='active';
+       btn[index].className='active';
+    }
+    
+    </script>
+</body>
+</html>

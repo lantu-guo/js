@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    /*
+    创建一个空对象，
+    循环数组，把数组的每一项既当做属性名，又当做属性值作为键值对存储到对象中,但是存储的时候得判断一下，这一项在对象中有没有，如果有就证明这一项在数组中是重复项。  
+    */
+    let ary=[4,7,3,7,4,34,24,24];  //[4,3,7,34,24]
+
+    function unique(ary){
+        let obj={};
+
+        for(var i=0;i<ary.length;i++){   
+
+            if(obj[ary[i]]!==undefined){
+                ary.splice(i,1);
+                i--;
+            }
+            else{
+                obj[ary[i]]=ary[i];              
+            }
+
+        }
+        //console.log(obj);  //{3: 3, 4: 4, 7: 7, 24: 24, 34: 34}
+
+
+        return ary;
+    }
+    console.log(unique(ary));  // [4, 7, 3, 34, 24]
+    
+    
+    
+    </script>
+</body>
+</html>

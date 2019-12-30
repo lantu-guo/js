@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #box {
+            width: 800px;
+            margin: 200px auto;
+            text-align: center;
+        }
+
+        #show {
+            color: rgba(255, 0, 0, 0.918);
+            font-size: 60px;
+            font-weight: 700;
+            display: block;
+            /* width: 200px; */
+            height: 100px;
+            line-height: 100px;
+
+        }
+
+        button {
+            display: block;
+            width: 100px;
+            height: 50px;
+            line-height: 50px;
+            background: orangered;
+            color: white;
+            font-size: 20px;
+            margin: 10px auto;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <span id="show">请点击开始</span>
+        <button id="btn">开始</button>
+    </div>
+    <script>
+        /*
+        定时分为两种：seTimeout   setInterval
+        setTimeout   一次性定时器，只会执行一次
+        setInterval  是周期性的定时器，每隔一段时间就会执行一次
+        定时器的第一个参数是函数，就是你到达时间执行的函数
+        第二个参数是你规定的毫秒时间
+        第三个参数开始，就是第一个函数的实参
+        */
+        let show = document.querySelectorAll('#box span')[0];
+        let btn = document.querySelector('#box button');
+        let inter = null;
+        let ary = ['秦浩', '李林', '颂霖', '班长'];   //自定义数组
+        // console.log(show,btn)   验证是否已经获取到了元素
+
+        //创建点击事件
+        btn.onclick = function () {
+            let value = btn.innerText;
+
+            if (value === '开始') {
+                btn.innerText = '停止'
+                inter = setInterval(createCode, 10);
+            }
+            else {
+                btn.innerText = '开始'
+                clearInterval(inter);
+                //show.innerText = '二狗'
+            }
+        }
+        function createCode() {
+            let index = Math.round(Math.random() * (ary.length - 1 - 0) + 0);
+            //设置产生随机整数（0-3之间）
+
+            let value = ary[index];
+            show.innerText = value;
+        }
+
+    </script>
+</body>
+
+</html>

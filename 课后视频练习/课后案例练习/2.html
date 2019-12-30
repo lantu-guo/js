@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数组去重</title>
+</head>
+<body>
+    <script>
+    //let ary = [23, 13, 23, 34, 23, 34, 23];   //[23,12,34]
+
+    // function uniqueAry(ary){
+    //     let obj={};
+    //     for(var i=0;i<ary.length;i++){
+    //         let cur=ary[i];
+    //         obj[cur]=cur;
+    //     }
+
+    //     let newAry=[];
+    //     for(var key in obj){
+    //         newAry.push(obj[key]);
+    //     }
+    //     return newAry;
+    // }
+    // console.log(uniqueAry(ary));
+
+      let ary = [23, 13, 23, 34, 23, 34, 23];  
+        function quickAry(ary){
+            if(ary.length<=1){
+                return ary;
+            }
+
+            let midIndex=Math.round(ary.length/2);
+            let midValue=ary.splice(midIndex,1);
+            //console.log(midValue);    //[23]
+            let leftAry=[];
+            let rightAry=[];
+
+            for(var i=0;i<ary.length;i++){
+                let cur=ary[i];
+                if(cur<midValue){
+                    leftAry.push(ary[i]);
+                }
+                else{
+                    rightAry.push(ary[i]);
+                }
+            }
+            return quickAry(leftAry).concat(midValue,quickAry(rightAry));
+        }
+        console.log(quickAry(ary));
+    
+    </script>
+</body>
+</html>

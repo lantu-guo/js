@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .box{
+        width: 200px;
+        height: 200px;
+        background: lawngreen;
+    }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <span>1111</span>
+    </div>
+    <script>
+        /*
+        dom的方法（补充）：
+        document.createElement('div')   创建一个元素
+        document.createTextNode（'1111'） 创建文本节点
+        insertBefore（）    在某一项的前边插入节点
+        appendChild（）   插入到某元素的末尾
+        removeChild（）   移除节点
+        
+
+        cloneNode（true/false）   克隆节点
+        如果传的参数是true，叫做申客隆（里边的内容全部克隆）；如果是false，就是浅克隆（里面内容不克隆）
+        
+        setAttribute(属性名，属性值)  给元素的结构上增加自定义属性
+        getAttribute(属性名) 获取结构是哪个自定义属性
+        用set设置的值必须用get获取；用点设置的值，必须用点去获取
+        removeAttribute（属性名） 移除元素结构中的属性
+
+        方法不能混着用
+        classList
+
+        */
+        let box=document.getElementsByClassName('box')[0];
+        // let clone1=box.cloneNode(true);
+        // console.log(clone1);
+        // document.body.appendChild(clone1);   //在body后边克隆一个div
+
+        // box.myIndex=1;
+        // //是把键值对增加到堆内存中
+        // console.log(box.myIndex);
+        // //获取属性值
+        // console.dir(box);
+
+        // box.setAttribute('flag',333);
+        // //给元素的结构上增加自定义属性
+        // console.log(box.getAttribute('flag'));   //333
+        // console.log(box.flag);   //undefined   点的方式获取不到，因为你用的是setAttribute的形式增加自定义属性
+
+        // console.log(box.removeAttribute('flag'));   //移除flag
+
+        box.classList.add('ddd');   //在原来的class基础上新增一个名字，不会把之前的名字覆盖
+          
+
+        
+    </script>
+</body>
+</html>

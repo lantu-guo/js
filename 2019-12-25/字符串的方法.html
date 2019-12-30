@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>字符串的方法</title>
+</head>
+<body>
+    <script>
+    //split 以特定形式将字符串转成数组
+    let str = 'as$dfgh$asd';
+    console.log(str.split('$'));   //["as", "dfgh", "asd"]
+    console.log(str.split('a'));    //["", "s$dfgh$", "sd"]
+    console.log(str.split('a').join(''));    //'s$dfgh$sd' 字符串形式
+
+    //replace替换
+    let str2 = 'asdasd';
+    console.log(str2.replace('a', 'x').replace('a','x')) // 'xsdxsd'
+   console.log(str2.replace(/a/g, 'x')) // 'xsdxsd'      global正则
+
+    </script>
+</body>
+</html>

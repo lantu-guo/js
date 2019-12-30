@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="show">yanzhengm</div>
+
+    <script>
+    let show=document.getElementsByTagName('div')[0];
+    let timer=null;
+    let flag=true;
+    
+
+    show.onclick=function(){
+        if(flag){
+            flag=!flag;
+            console.log(1);
+            timer=setInterval(createCode,100);
+        }
+        else{
+            console.log(2);
+            flag=!flag;
+            clearInterval(timer);
+        }
+
+    }
+    function createCode(){
+        let str='1234567890zxcvbgfdsaqwertASDFGHJKLMNBVCXZ';
+        let value='';
+        for(var i=0;i<4;i++){
+            let intex=Math.round(Math.random()*(str.length-1-0)+0);
+            let item=str[intex];
+            value+=item;
+        }
+        show.innerHTML=value;
+    }
+    
+    
+    </script>
+</body>
+</html>

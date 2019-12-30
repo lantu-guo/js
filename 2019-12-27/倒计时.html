@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    div{
+        width: 100%;
+        height: 100px;
+        background: lawngreen;
+        font-size: 50px;
+        font-weight: bold;
+        line-height: 100px;
+    }
+    
+    
+    </style>
+
+</head>
+<body>
+    <div>显示时间</div>
+    <script>
+        /* 
+        倒计时原理：
+        1、你得有一个结束时间
+        2、得到当前时间和结束时间之间的时间差
+        3、把时间差转换为你想要的格式，展示在页面
+        4、用定时器不断更新页面上的时间差
+        */
+        let box=document.getElementsByTagName('div')[0];
+
+        //设置结束时间
+        let endTime=new Date('2019-12-27 11:30');
+        let timer=null;
+
+        function addZero(value){
+            //补零操作，小于10，前边补零
+            return value < 10 ? '0' + value : value;
+        }
+        //当前时间
+        function setTime(){
+            let time=new Date();
+            let diffTime=endTime-time;   //获取时间差是一个毫秒差
+            //console.log(diffTime);
+
+            //添加判断，倒计时结束时候的显示，如果不添加就显示负数
+            if(diffTime<=0){
+                clearInterval(timer);
+                box.innerHTML='时间到';
+                return;
+            }
+
+            //获取当前时间
+            let hours=Math.floor(diffTime/1000/60/60);//获取小时数
+            let min=Math.floor((diffTime-hours*60*60*1000)/1000/60);  //获取分钟
+            let sec=Math.floor((diffTime-hours*60*60*1000-min*60*1000)/1000); //获取秒
+            let res=addZero(hours)+':'+addZero(min)+':'+addZero(sec);
+            //console.log(res);
+            box.innerHTML=res;  //将时间显示在页面中
+        }
+
+        setTime();
+        timer= setInterval(setTime,1000);
+        
+        
+    </script>
+</body>
+</html>

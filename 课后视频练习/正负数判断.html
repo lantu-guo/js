@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>正负数判断</title>
+    <style>
+        /* 搭建共同样式 */
+    #numInp,#submit{
+        box-sizing: border-box;
+        padding: 0 15px;
+        height: 35px;
+        border: 1px solid red;
+    }
+    #submit{
+        cursor: pointer;
+    }
+    </style>
+</head>
+<body>
+    <!-- 看到一道题，先搭建样式，然后在写js的结构 -->
+    <input type="text" id="numInp">
+    <button id="submit">点击计算</button>
+
+    <!-- import js -->
+    <script>
+        // 先获取元素
+    let numInp=document.getElementById('numInp');
+    let submit=document.getElementById('submit');
+        //事件绑定
+    submit.onclick=function(){
+        //获取文本框的内容,获取表单元素的值用.value
+       let n= numInp.value
+       //console.log(typeof n);   得到的是字符串string
+        n=Number(n);    //转成数字类型在进行判断
+        //外层判断：判断的是否是有效数字
+        if(isNaN(n)===false){
+            //也可以用!isNaN(n),说明是有效数字
+            //里层判断是否是正负数或者是零
+            if(n>0){
+                console.log('输入信息是正数');
+            }
+            else if(n<0){
+                console.log('输入信息是正\负数');
+            }
+            else{
+                console.log('零');
+            }
+        }
+        else{
+            console.log('当前输入的信息是非有效数字！');
+        }
+    }
+    
+    </script>
+</body>
+</html>

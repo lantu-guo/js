@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // 循环数组的每一项，把数组的每一项和他后面的值一一做比较，如果和数组的当前项相同了，证明这一项就是重复项，就把他在原数组里删除。
+    let ary = [23, 13, 23, 34, 23, 34, 23];
+
+    function newAry(ary){
+
+        for(var i=0;i<ary.length-1;i++){
+            let cur=ary[i];
+            //console.log(cur);
+
+            for(var j=1+i;j<ary.length;j++){
+                let next=ary[j];
+
+                if(cur===next){
+                    ary.splice(j,1);
+                    j--;
+                }
+
+            }
+        }
+        return ary;
+    }
+    console.log(newAry(ary));
+
+
+    
+    
+    </script>
+</body>
+</html>

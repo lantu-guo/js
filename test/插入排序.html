@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    let ary=[4,56,12,34,67];
+
+    function insertAry(ary){
+        let handAry=[];
+        handAry.push(ary[0]);
+
+        for(var i=1;i<ary.length;i++){
+            let gradCar=ary[i];
+
+            for(var j=ary.length-1;j>=0;j--){
+                let next=ary[j];
+                if(next<gradCar){
+                    handAry.splice(j+1,0,gradCar);
+                    break;
+                }
+                if(j===0){
+                    handAry.unshift(gradCar);
+                }
+            }
+        }
+        return handAry;
+    }
+    console.log(insertAry(ary));
+   
+    
+    </script>
+</body>
+</html>

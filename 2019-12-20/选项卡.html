@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>选项卡</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    ul{
+        list-style: none;
+        display: flex;
+        position: relative;
+        top: 1px;
+    }
+    #box{
+        width: 500px;
+        /* border: 1px  solid red;
+        box-sizing: border-box; */
+        margin: 20px  auto;
+    }
+    ul li{
+        width: 100px;
+        /* height: 30px; */
+        line-height: 30px;
+        border: 1px  solid red;
+        box-sizing: border-box;
+        margin-right: 5px;
+        font-size: 20px;
+        text-align: center;
+        cursor: pointer;
+    }
+    #box div{
+        width: 500px;
+        height: 300px;
+        line-height: 300px;
+        font-size: 20px;
+        text-align: center;
+        border: 1px  solid red;
+        display: none;
+    }
+    ul li.active{
+        border-bottom-color: #fff;
+    }
+    #box div.active{
+        display: block;
+    }
+
+    
+    </style>
+</head>
+<body>
+    <div id="box">
+        <ul id="ul">
+            <li class="active">1</li>
+            <li >2</li>
+            <li>3</li>
+        </ul>
+        <div class="active">1</div>
+        <div>2</div>
+        <div>3</div>
+    </div>
+    <script>
+    //1、想操作谁就获取谁
+    let ul=document.getElementById('ul');
+    let navList=ul.getElementsByTagName('li');  //获取的是多个li
+    let box=document.getElementById('box');
+    let tabList=box.getElementsByTagName('div');
+
+    //2、绑定事件
+    for(var i=0;i<navList.length;i++){
+        //给每一个li增加自定义属性，属性值为当前的i
+        navList[i].myIndex=i;
+        navList[i].onclick=function(){
+            //console.log(1)验证是否获取了元素
+            //3、在事件里做你想做的事
+            //当你点击的时候，for循环早已结束运行，此时的i已经变成3，所以不管你点击哪个li，i的值都是3
+           // console.log(i);
+           //函数执行时把当前li的索引位置传递过去
+            fn(this.myIndex);
+        }
+    }
+
+    function fn(index){
+        //1、清除所有li和div的class名
+        for(var i=0;i<navList.length;i++){
+            navList[i].className='';
+            tabList[i].className='';
+        }
+        //给相应的div和li增加class名
+        navList[index].className='active';
+        tabList[index].className='active';
+    }
+    
+    
+    </script>
+</body>
+</html>

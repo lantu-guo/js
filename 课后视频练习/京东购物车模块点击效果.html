@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>购物车点击事件</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box,
+        .box .detail {
+            border: 1px solid lightcoral;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .box {
+            width: 200px;
+            height: 40px;
+            line-height: 40px;
+            margin: 20px auto;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .box .detail {
+            width: 400px;
+            height: 100px;
+            line-height: 100px;
+            position: absolute;
+            right: -1px;
+            top: 38px;
+            z-index: -1;
+            /* display: none; */
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box" id="box">
+        <span>购物车</span>
+        <div class="detail" id="detail" style="display: none;">
+            购物车详情
+        </div>
+    </div>
+    <!-- 传统基于操作DOM元素的方式实现业务需求
+        1、在js中想操作谁就先获取谁；
+        2、给某元素绑定事件；
+        3、 在事件触发的时候修改元素的样式等
+    -->
+    <!-- import js -->
+    <script>
+        //document.getElementById([id名]) 通过元素的id获取这个元素
+        //创建一个变量
+        let box = document.getElementById('box');
+        let detail = document.getElementById('detail');
+
+        //元素对象.onxxx=function（）：事件绑定，都是小写，xxx事件类型（click/mouseover/mousedown/keydowm....）
+        //鼠标点击事件绑定
+        box.onclick=function(){
+            //元素对象.style.xxx=xxx：修改元素的某一个样式值
+            //这种方式操作的是行内样式；所以如果没有把样式写在行内上，在js中基于.style.xxx的方式是无法获取到样式的
+            // detail.style.display='block';
+            // box.style.borderBottomColor='#fff';
+            // 判断
+            //1、首先获取detail原有的样式（显示/隐藏）：元素.style.xxx就是获取某一个样式
+            //前提是在行内上设置一个displ这个样式才能获取到
+            let n=detail.style.display;
+            if(n==='none'){
+                //当前是隐藏的，我们让其显示
+                detail.style.display='block';
+                box.style.borderBottomColor='#fff';
+            }
+            else{
+                //当前是显示的，我们让其隐藏
+                detail.style.display='none';
+                box.style.borderBottomColor='lightcoral';
+            }
+        }
+
+    </script>
+</body>
+
+</html>

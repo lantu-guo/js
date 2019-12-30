@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //数字和Boolean转字符串，直接加引号
+        console.log((12).toString())   //'12'
+        console.log(true.toString())    //'true'
+        console.log(false.toString())    //'false'
+
+        //null 和undefined转字符串，不能直接调用toString（）方法，会报错
+        //console.log(undefined.toString())   //报错
+        //console.log(null.toString())   //报错
+
+        //如果你一定要把null和undefined转换成字符串，就用字符串拼接法
+        console.log(null + '')
+        console.log(undefined + '')
+
+        console.log([].toString())    //空
+        console.log([23, 12].toString())   //'23,12'
+
+        //四则运算，先转数字，在计算
+        console.log(true * 6 / 2 * (parseInt('ss')))    //NaN
+        console.log(3.2434 * 24234 / 44 - {})     //NaN
+
+        console.log(true + '1' + false)   //'true1false'
+        console.log([] + {})   //''+[object Object]-->[object Object]
+        console.log([] + {})   //''+[object object]-->[object object]
+        console.log({} + {})   //'[object object]'+'[object object]'-->[object object][object object]
+
+        let a = 10 + null + true + [] + '珠峰' + [] + {} + false;
+        console.log(a)
+        //10+0    10
+        //10+true    11
+        //11+[]   11+''  '11'
+        //'11+'珠峰'   '11珠峰'
+        //'11珠峰[object Object]false'
+
+        //面试题
+        let b = 1 + null + true + undefined + '珠峰' + {} + null
+        console.log(b)
+        //1+null   1
+        //1+true   2
+        //2+undefined   NaN
+        //NaN+'珠峰'  'NaN珠峰'
+        //'NaN珠峰'+{}    'NaN珠峰[object Object]'
+        //'NaN珠峰[object Object]'+null      'NaN珠峰[object Object]null'
+
+
+        let c = 1 + isNaN(null) + undefined + 'zhufeng' + {} + parseInt('13px')
+        console.log(c)
+        //1+false+NaN+。。。+13
+        //NaN+'zhufeng' + {} + parseInt('13px');
+        //NaN珠峰[object Object]+ parseInt('13px')
+        //NaN珠峰[object Object]13
+
+        //布尔
+        //将其他数据类型转换成布尔
+
+        console.log(Boolean(1))    //true
+        //null、undefined、0、'''、NaN是False，其余都是true
+        console.log(Boolean(null))
+        console.log(Boolean(undefined))
+        console.log(Boolean(0))
+        console.log(Boolean(''))
+        console.log(Boolean(NaN))
+
+        console.log(!isNaN(!NaN))    //true
+
+        console.log(!!parseInt( !Number( !!isNaN('13px') ) ))
+
+
+    </script>
+
+</body>
+
+</html>

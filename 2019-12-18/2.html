@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 200px;
+            height: 200px;
+            background: red;
+            margin: 20px auto;
+        }
+
+        .ss {
+            /* background: black; */
+            color: aquamarine;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box" class="boxss" style="color: yellow;">1111</div>
+    <script>
+        /* 
+        元素也是对象；
+        get:获取
+        element：元素
+        by：通过
+        */
+        let box = document.getElementById('box');
+        //    console.dir(box) // 在控制台详细输出一个对象
+        //    console.log(box.className)
+
+        // box.className = 'ss'; //js动态增加calss名
+        //    console.log(box.style) 
+        //    box.style.backgroundColor = 'orange' // 动态增加style样式
+
+
+        // console.log(box.innerHTML) // 获取元素的内容
+        // console.log(box.innerText) // 获取元素的内容
+        // box.innerHTML = '12345678';// 设置元素的内容
+        // box.innerText = 'sssss'// 设置元素的内容
+        box.innerHTML = '<span class="w" style="color:green">哈哈</span>'
+        // box.innerText = '<span class="w" style="color:red">哈哈</span>'
+        /* 
+        className：元素写的class名
+        style :元素的行内样式
+        innerHTML: 获取元素的内容(可以识别标签)
+        innerText: 获取元素的内容(不可以识别标签)
+        */
+    </script>
+</body>
+
+</html>

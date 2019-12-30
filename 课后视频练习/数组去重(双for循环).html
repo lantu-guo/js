@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数组去重--双for循环</title>
+</head>
+<body>
+    <script>
+    // 循环数组的每一项，把数组的每一项和他后面的值一一做比较，如果和数组的当前项相同了，证明这一项就是重复项，就把他在原数组里删除
+     let ary = [23, 13, 23, 34, 23, 34, 23];
+
+     function unique(ary){
+         //循环数组的每一项
+        for(var i=0;i<ary.length-1;i++){
+            let cur=ary[i];    
+            //此循环就是把当前项和他后边的每一项去做比较
+            for(var j=1+i;j<ary.length;j++){
+                let next=ary[j];
+
+                //判断，如果后边项和当前项相同，就把这一项在原数组中删除
+                if(cur===next){
+                    ary.splice(j,1);
+                    j--;   //防止数组塌陷
+                }
+            }
+        }
+        return ary;
+     }
+     console.log(unique(ary));
+    //  let newAry=unique(ary);
+    // // console.log(newAry);
+
+    //  function quickSort(newAry){
+    //     if(newAry.length<=1){
+    //         return newAry;
+    //     }
+    //     let midIndex=Math.round(newAry.length/2);
+    //     let midItem=newAry.splice(midIndex,1);
+    //     //console.log(midIndex);
+    //     //console.log(midItem);
+    //     let leftAry=[];
+    //     let rightAry=[];
+
+    //     for(var i=0;i<newAry.length;i++){
+    //         let cur=newAry[i];
+    //         //console.log(cur);
+    //         if(cur<midItem){
+    //             leftAry.push(cur);
+    //            // console.log(leftAry);
+    //         }
+    //         else{
+    //             rightAry.push(cur);
+    //             //console.log(rightAry);
+    //         }
+    //     }
+    //      return quickSort(leftAry).concat(midItem,quickSort(rightAry));
+    //  }
+    //  console.log(quickSort(newAry));
+    
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    let url='http://www.zhufengpeixun.cn/index.html?lx=1&name=zhufeng&teacher=aaa#box';
+    /*
+    结果：{
+        lx:1,
+        name:'zhufeng',
+        teacher:'aaa',
+        HASH:'box'
+    }
+    */
+    //1、获取问号或者井号后边的值
+    let askIndex=url.indexOf('?');   //先获得？的索引位置
+    let wellIndex=url.indexOf('#');   //获取#的索引位置
+    let askText=url.substring(askIndex+1,wellIndex);   //从索引？开始截取到索引#的位置，不包括#的位置
+    let wellText=url.substring(wellIndex+1);    //获取#后边的值
+    //console.log(askText,wellText);
+    //'lx=1&name=zhufeng&teacher=aaa'   box
+
+    //2、问号后边的详细处理
+    let askAry=askText.split('&');   
+    //console.log(askAry);    // ["lx=1", "name=zhufeng", "teacher=aaa"]
+
+    let result={};
+    askAry.forEach(item=>{
+        //item:当前从数组中循环的这一项
+       let n= item.split('=');
+      // console.log(n);  //["lx", "1"]  ["name", "zhufeng"]   ["teacher", "aaa"]
+        let key=n[0];
+        let value=n[1];
+        result [key]=value;
+    });
+    result['hash']=wellText;
+    console.log(result);  //{lx: "1", name: "zhufeng", teacher: "aaa", hash: "box"}
+
+    //用函数封装一个方法
+    function queryURLParams(url){
+        let askIn=url.indexOf('?');
+        let wellIn=url.indexOf('#');
+    }
+    
+    
+    </script>
+</body>
+</html>

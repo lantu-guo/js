@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //1-100之间既能被3整除又能被5整除的数的和
+    function fn(num){
+        if(num>100){
+            return 0;
+        }
+        if(num%(3*5)===0){           
+            return num+fn(num+1);
+        }
+        
+        return fn(num+1);
+    }
+    console.log(fn(1));    //315
+
+    //1-5之间能被2整除的数的和
+    // function fn(sum){
+    //     if(sum>5){
+    //         return 0;
+    //     }
+    //     if(sum%2===0){
+    //         return sum+fn(sum+1);
+    //     }
+    //     return fn(sum+1);
+    // }
+    // console.log(fn(1));    //6
+
+    
+    
+    </script>
+</body>
+</html>
