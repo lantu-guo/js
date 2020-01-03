@@ -37,11 +37,11 @@
         let i = 0;
         //let bg = body.style.backgroundColor;
         btn.onclick = function () {
-            i++;
+            //i++;
             console.log(i);
            i>ary.length-1?i=0:null
            //如果索引累加后比数组最大的索引都要大，让其从零开始；
-            body.style.backgroundColor = ary[i];
+            body.style.backgroundColor = ary[i++];
            
         }
 

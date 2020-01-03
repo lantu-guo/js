@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // function fn(){}
+        // let f=function(){}
+        // console.log(window.fn);   //f
+        // console.log(window.f);   //undefined
+
+        // var a=12;
+        // var a=13;
+        // let b=14;
+        // //let b=15;   //报错
+
+        //  const a=12;
+        //  const b;  
+        //  b=13;   //  报错，只能赋值一次
+
+        // var a=10;
+        // function fn(){
+        //     function a(){};
+        //     a=12;
+        //     console.log(a);  //12
+        //     //如果私有作用域有你要找的那个变量，就不从外边找了
+        // }
+        // fn();
+        // console.log(a);   //10
+
+        // var a = 10; // 全局变量
+        // function fn(a){ // 私有变量  100
+        //     console.log(a); // 100 
+        // }
+        // fn(100);
+
+        // var num = 100 //
+        // function fn(num) {
+        //     num++;
+        //     console.log(num);   //101
+        // }
+        // fn(num);
+        // console.log(num);   //100
+
+        // console.log(a);    //undefined
+        // var a=12;
+        // console.log(a);    //12
+
+        // console.log(a);   //undefined
+        // console.log(b);   //报错
+        // var a=b=c=100;
+        // 等价var a=100;
+        //         b=100;
+        //         c=100;
+
+        // b = 12; // 相当于window.b = 12;
+        // var b = 12; // 虽然也会给window增加键值对，但是还有变量提升
+
+        // var a = b = c = 12; // 等价于 var a = 12;b=12;c=12;
+        // var a,b,c = 12; // 等价于var a;var b;var c = 12;
+
+        // var a = 12,b = 13, c = 14; // var a = 12; var b = 13; var c = 14;
+        
+        // console.log(a);   //undefined
+        // console.log(b);  //undefined
+        // console.log(c);   //undefined
+        // var a,b,c=100;   // 等价于var a;var b;var c = 12;
+        // console.log(a);   //undefined
+        // console.log(b);   //undefined
+        // console.log(c);   // 100
+
+        // fn();
+        // function fn(){
+        //     console.log(num);   //undefined
+        //     var num=12;
+        // }
+        // console.log(num);   //报错
+
+
+        // var name = 'erYa';
+        // function fn(name){
+        //     console.log(name);
+        //     function name(){};
+        //     console.log(name);
+        // }
+        // fn(name);
+        //name  
+
+        //fn --
+        //形参name   
+
+        //fn f1-5-3
+        // fn()   //5
+        // function fn() {
+        //     console.log(1)
+        // }
+        // fn()    //5
+        // function fn() {
+        //     console.log(2)
+        // }
+        // fn()   //5
+        // var fn = function () {
+        //     console.log(3)
+        // }
+        // fn()   //3
+        // function fn() {
+        //     console.log(4)
+        // }
+        // fn()   //3
+        // function fn() {
+        //     console.log(5)
+        // }
+
+        //n=1  
+        //fn   f   //n=2,1,0   f n=1 
+        //x=1
+        var n = 1;
+        function fn() {
+            var n = 2;
+            function f() {
+                n--;
+                console.log(n);   // 1   0
+            };
+            f();
+            return f;
+        }
+        var x = fn();  //x=1
+        x();   //f执行
+        console.log(n);   //1
+
+        // 变量提升的特殊情况
+
+        //1、变量提升只发生在等号的左边
+        //    console.log(fn)
+        //    var fn = function(){}
+
+        // 2、不管条件是否成立，都要进行变量提升
+
+        // console.log(num) // un 
+        // if (false) {
+        //     var num = 12;
+        // }
+        // console.log(num) // un
+
+
+        /* 
+        fn
+        */
+        // console.log(fn); // un
+        // if(false){
+        //     // 在老版本浏览器中，条件判断里的带function的不仅要声明，还有定义，
+        //     // 在新版本浏览器中，带function只声明不定义
+        //     // 条件一旦成立，做的第一件事就是给函数名赋值
+        //     fn()
+        //     function fn(){}
+        // }
+        // console.log(fn) // un
+
+
+        /* 
+        fn = f
+        */
+        // console.log(fn); // un
+        // if(true){
+        //     // 在老版本浏览器中，条件判断里的带function的不仅要声明，还有定义，
+        //     // 在新版本浏览器中，条件判断里的带function只声明不定义
+        //     // 条件一旦成立，做的第一件事就是给函数名赋值
+        //     fn() // 不会
+        //     function fn(){}
+        // }
+        // console.log(fn) // f
+
+        // //给window增加键值对，在变量提升阶段。
+        // // 条件一旦成立，做的第一件事就是给函数名赋值
+        // //fn--->f='erya'
+        // //window.fn--->f='erya'
+        // if('fn' in window){
+        //     fn();     //'erya'
+        //     function fn(){
+        //         console.log('erya');   //'erya'
+        //     }
+        // }
+        // fn();
+
+
+
+        //自执行函数没有变量提升
+       // (function(){})()   //自执行函数
+
+        var obj = {
+            fn: (function () {
+       // 当代码执行到这一行的时候，往堆内存里存储键值对的时候，自执行函数就运行了
+                console.log(100);   //100
+                return function () {
+                    console.log(200);
+                }
+            })()
+        };
+        console.log(300);    //300
+        obj.fn(); // 执行函数中返回的小函数执行  200
+        console.log(obj.fn);   //f
+        // 100 300 200 f
+
+
+    </script>
+</body>
+
+</html>

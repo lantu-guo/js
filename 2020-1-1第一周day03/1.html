@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //let 比var更加严谨
+    // console.log(typeof a);   //undefined  暂时性死区，这是浏览器的bug，本应该报错，因为没有a（暂时性死区）
+    
+
+    //报错Uncaught ReferenceError: Cannot access 'a' before initialization
+    // console.log(typeof a);  
+    // let a; 
+
+    //两个f不冲突，一个是私有的，一个是全局的
+    // function fn(){
+    //     let f=function(){
+    //         console.log(1);
+    //     }
+    //     return f;
+    // }
+    // let f=fn();
+    // console.log(f);
+
+    //fn里开辟一个私有作用域，在里边创建m堆内存，将生成的16进制空间地址赋值给全局的m，所以是被外界接收的，作用域不销毁。
+    // let m=1;
+    // function fn(){
+    //     m=function(){
+
+    //     }
+    // }
+    // fn();
+
+
+    //另外一种情况就销毁，m开辟出的堆内存不被外界接收
+    function fn(){
+       let m=function(){
+
+        }
+    }
+    fn();
+    </script>
+</body>
+</html>

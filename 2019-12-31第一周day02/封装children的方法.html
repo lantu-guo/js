@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>封装children方法</title>
+</head>
+<body>
+    <div id="box">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </div>
+    <script>
+    //children 获取所有的子元素节点
+    function children(context){
+        let child=context.childNodes;  //获取所有的子节点（类数组）
+        let ary=[];
+        for(var i=0;i<child.length;i++){
+            var cur=child[i];   //代表每一个子节点
+            //元素节点的nodeType是1，其他都不是
+            if(cur.nodeType===1){
+                ary.push(cur);  //把当前节点增加到数组的末尾
+            }
+        }
+        return ary;
+    }
+    console.log(children(box));
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>选项卡</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+            display: flex;
+            position: relative;
+            top: 2px;
+        }
+
+        #box {
+            width: 500px;
+            margin: 20px auto;
+
+        }
+
+        ul li {
+            width: 100px;
+            height: 50px;
+            border: 2px solid #333;
+            padding: 10px;
+            box-sizing: border-box;
+            text-align: center;
+            margin-right: 20px;
+            background: darkcyan;
+            cursor: pointer;
+        }
+
+        #box>div {
+            width: 500px;
+            height: 300px;
+            text-align: center;
+            border: 2px solid #333;
+            display: none;
+            background: darkcyan;
+        }
+
+        #box>div.active {
+            display: block;
+            background: lightseagreen;
+        }
+
+        #ul li.active {
+            border-bottom-color: lightseagreen;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <ul id="ul">
+            <li class="active">1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+        <div class="active">一</div>
+        <div>二</div>
+        <div>三</div>
+    </div>
+    <script>
+        let box = document.getElementById('box');
+        let nav = document.getElementById('ul');
+        let boxList = box.getElementsByTagName('div');
+        let navList = nav.getElementsByTagName('li');
+
+        //利用闭包实现选项卡
+        /* 
+        i=0
+             navList[0].onclick = (function(index){ // 0
+                自执行函数，函数不销毁
+                return function(){
+                    tabSelect(index)
+                }
+            })(i)
+
+         i=1
+            navList[1].onclick = (function(index){ // 1
+
+                return function(){
+                    tabSelect(index)
+                }
+            })(i)
+
+        i=2
+             navList[2].onclick = (function(index){ // 2
+
+                return function(){
+                    tabSelect(index)
+                }
+            })(i)
+        */
+        for (var i = 0; i < navList.length; i++) {
+            navList[i].onclick = (function (index) {
+                return function () {
+                    fn(index)
+                };
+            })(i)
+        }
+
+        function fn(index) {
+            for (var i = 0; i < navList.length; i++) {
+                navList[i].className = '';
+                boxList[i].className = '';
+            }
+            navList[index].className = 'active';
+            boxList[index].className = 'active';
+
+        }
+
+        // var num=100;
+        // var obj = {
+        //     num: 2,
+        //     fn: function () {
+        //         var num = 1;
+        //         console.log(this);  //obj
+        //         (function (num) {
+        //             console.log(this.num + num);   //window 100+2
+        //         })(this.num)
+        //     }
+        // }
+        // obj.fn();
+        // var f = obj.fn;   
+        // f()
+
+
+        var num = 1;  //6 7 
+        var obj = {
+            num: 0,
+            fn: function () {   //obj
+                num = 6;
+                (function (num) {  //0  1
+                    ++this.num;    //7  window
+                    num++;      
+                    console.log(num)   // 1
+                })(this.num)   //6
+            }
+        }
+        obj.fn(); 
+        console.log(window.num, obj.num);  //7  0
+
+    </script>
+
+</body>
+
+</html>

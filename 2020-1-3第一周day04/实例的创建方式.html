@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //字面量创建实例
+    // var num=1;
+    // console.log(num.toFixed(2));   //字符串1.00
+
+
+    //构造函数创建实例
+    // var num1=new Number(1);
+    // console.log(num1);    //Number {1}
+    // console.log(num1.toFixed(2));   //字符串1.00
+
+
+    // let ary=[1,2,3,4,5];
+    // console.log(ary);    //[1, 2, 3, 4, 5]
+    // let ary1=new Array(1,2,3,4,5);
+    // console.log(ary1);    //[1, 2, 3, 4, 5]
+
+    // let ary2=new Array(1);
+    // console.log(ary2);    //[empty]  里边的length是1
+
+    // let ary3=new Array(3);
+    // console.log(ary3);     //[empty]  里边的length是3
+    //如果构造函数传递一个实参，那实例就是空，但是它的length是当前实参的值
+    //null和undefined不能通过构造函数创建
+
+        // let f=new Fn;
+        // console.log(f instanceof Fn);    //true
+
+        let num=Number(1);
+        console.log(num instanceof Number);    //false
+
+        let num1=new Number(1);
+        let ary=new Array(1,2,3,4);
+        console.log(num1 instanceof Number);    //true
+        console.log(ary instanceof Array);    //true
+
+    
+    
+    </script>
+</body>
+</html>

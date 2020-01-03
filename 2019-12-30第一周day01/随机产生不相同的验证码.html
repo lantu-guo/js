@@ -20,7 +20,24 @@
       // 分封装一个方法，把对象里所有的属性名push到一个数组里
       // [a,b,c,d,e,f]
       */
-    
+    function creatCode(){
+        let str='dascxeqwtyu1235467890DFGGYTEWE';
+        let value='';
+        let num=0;
+
+        while(num<4){
+            //产生一个随机索引
+            let index=Math.round(Math.random()*(str.length-1));
+            let item=str[index];
+            //if(value.toUpperCase().indexOf(item.toUpperCase())===-1)
+            //判断这个字符在验证码里是不是存在
+            if(value.indexOf(item)===-1){
+                value+=item;
+                num++;
+            }
+        }
+        console.log(value);
+    }
     </script>
 </body>
 </html>
