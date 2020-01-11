@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // function fn(i){
+        //     return function(n){
+        //         console.log(n+(i++));
+        //     }
+        // }
+        // var f=fn(10);
+        // f(20);
+        // fn(20)(40);
+        // fn(30)(50);
+        // f(30);
+
+
+        // var i=10;//11 12 13 14
+        // function fn(){
+        //     return function (n){
+        //         console.log(n+(++i));
+        //     }
+        // }
+        // var f=fn();
+        // f(20);//31
+        // fn()(20);//32
+        // fn()(30);//41
+        // f(30);//42
+
+
+
+        // var ary=[1,2,3,4];    
+        // function fn(ary){
+        //     ary[0]=0;
+        //     ary=[0];
+        //     ary[0]=100;
+        //     return ary;
+        // }
+        // var res=fn(ary);     
+        // console.log(ary);    
+        // console.log(res);  
+        
+        
+        // var test =(function(i){
+        //     return function(){
+        //         alert(i*=2);
+        //     }
+        // })(2);
+        // test(5);
+
+
+        // var a=1;
+        // var obj={
+        //     "name":"tom"
+        // }
+        // function fn(){
+        //     var a2=a;
+        //     obj2=obj;
+        //     a2=1;
+        //     obj2.name="jack";
+        // }
+        // fn();
+        // console.log(a);
+        // console.log(obj);
+
+
+        // var a=1;
+        // function fn(a){
+        //     console.log(a);
+        //     var a=2;
+        //     function a(){}
+        // }
+        // fn(a);
+
+        var a=0,b=0;
+        function A(a){
+            A=function(b){
+                alert(a+b++);
+            }
+            alert(a++);
+        }
+        A(1);
+        A(2);
+
+        //1.
+        // var ary = [12, 23];
+        // function fn(ary) {
+        //     console.log(ary);   //[12,23]
+        //     ary[0] = 100;
+        //     ary = [100];
+        //     ary[0] = 0;
+        //     console.log(ary);  //[0]
+        // }
+        // fn(ary);
+        // console.log(ary);  //[100,23]
+
+        //2、
+        // console.log(a)  //undefined
+        // if(!('a' in window)){
+        //     var a = 13
+        // }
+
+        // console.log(a)   //undefined
+
+        //3、
+        //var s = 5;
+        // function fn() {
+        //     var n = 0;
+        //     function f() {
+        //         n++;
+        //         console.log(n);  //1  2
+        //     }
+        //     f();
+        //     return f;
+        // }
+        // var r = fn();  //f--1
+        // r();
+        //console.log(s);   //s=5
+
+        //4、
+        // var a = 4;
+        // var f = 3;
+        // function b(x,y,a) {
+        //     alert(a);      //3
+        //     // 形参和arguments存在映射关系；
+        //     arguments[2]=10;
+        //     alert(a);   //10
+        // }
+        // a=b(1,2,f);
+        // alert(a);
+        // console.log(f);  //undefined
+
+        //5、
+        // var foo='hello';
+        // (function(foo){
+        //     console.log(foo);   //hello
+        //     var foo=foo||'world';    //hello
+        //     console.log(foo);   //hello
+        // })(foo);
+        // console.log(foo);   //hello
+
+        //7、报错
+        // f = function(){return true};
+        // g = function(){return false};
+        // ~function(){
+        //     if(g() && [] == ![]){
+        //         f = function(){return false};
+        //         function g(){return true};
+        //     }
+        // }();
+        // console.log(f());
+        // console.log(g());    
+
+        //8、
+        // console.log(a)   //undefined
+        // var a = 12,
+        //     b = 12;
+        // function fn() {
+        //     console.log(a, b);    //undefined  12
+        //     var a = b = 13;
+        //     console.log(a, b);   //a=b=13
+        // }
+        // fn();
+        // console.log(a, b);
+
+        //9、报错
+        //console.log(a);     //undefined
+        // a=12;
+        // function fn(){
+        // 	console.log(a);   //12
+        // 	a=13;	
+        // }
+        // fn();
+        // console.log(a);   //13
+
+
+        // var i = 5;
+        // function fn(i) {
+        //     return function (n) {
+        //         console.log(n + (++i));  //i=2   
+        //     }
+        // }
+        // var f = fn(1);
+        // f(2);
+        // fn(3)(4);
+        // fn(5)(6);
+        // f(7);
+        // console.log(i);
+
+
+        //i=5
+        //fn--i=1 2   --f
+        //f(2)   --f  2+2=4
+        //fn(3)  i=3---f  4+4=8
+        //fn(5)  i=5---f   6+6=12
+        //f(7)    i=2---f   7+3=10
+        //i=5
+
+
+        // function fn(n) {
+        //     //n=7,8,9     //n=1,2    //n=3,4
+        //     return function (m) {  //m=5  n=2
+        //         console.log(m + (n++))   //5+7=12   6+8=14   2+1=3  4+3=7
+        //     }
+        // }
+        // var f = fn(7);
+
+        // f(5);   
+        // f(6);
+        // fn(1)(2);
+        // fn(3)(4);
+
+
+        // var num = 1;
+        // var obj = {
+        //     num: 10,
+        //     fn: (function (num) {
+        //         var num = 2;   //3  4   //5      //6
+        //         return function (n) {   //10  //30  //40
+        //             console.log(n * (num++));   
+        //         }
+        //     })(num)
+        // }
+        // var f = obj.fn;
+        // console.log(f === obj.fn)  //true
+        // f(10);   //10*2
+        // f(20);   //20*3
+        // obj.fn(30);   //4*30
+        // obj.fn(40);   //5*40
+
+
+
+        // var a = 9; //2
+        // function fn() {
+        //     a = 0;  //1  1     //1   
+        //     return function (b) {
+        //         return b + a++;
+        //     }
+        // }
+        // var f = fn();  //function (b) {return b + a++;}
+        // var m = f(5);  //5+0   a=1
+        // alert(m);
+        // var n = fn()(5);   //5+0   a=1
+        // alert(n);  
+        // var x = f(5);    //5+1   a=2
+        // alert(x);
+        // alert(a);   //2
+
+
+
+
+
+    </script>
+</body>
+
+</html>

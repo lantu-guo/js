@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>复习day01-day04</title>
+</head>
+
+<body>
+    <script>
+        /* 
+        复习这一周的知识点：
+        1、git
+        2、作用域、变量提升、this、堆栈内存的销毁、闭包
+        3、模式、构造函数、面向对象
+         */
+
+        /* 
+        git：版本控制系统
+        git：工作区、暂存区、历史区
+
+        git config -l
+        git config --blobal user.name 'xxxx'
+        git config --blobal user.name 'xxxx@xxxxx'
+
+        git init
+
+        创建git仓库，完成版本控制
+        git add . 
+        git add -A
+        git add 文件名
+        git status(如果是红色，在工作区，绿色是在暂存区，如果没有颜色，那就是历史区)
+
+        git commit -m'注释'
+        git log
+        git reflog
+        git reset --hard 七位历史版本号
+
+        gitHub
+        把代码提交到远程仓库
+        git remote -v
+        git remote add origin 远程仓库项目地址
+        git remote rm origin
+
+        git pull origin master
+        git push origin master
+
+        git clone 远程仓库项目地址  本地的项目名(可以不写)【git init、 git remote add 、 git pull】
+
+         */
+        /* 
+       dom节点之间的关系属性
+       动态操作dom节点
+       */
+        /* 
+        childNodes：获取元素的所有子节点
+        children：获取所有的元素子节点
+        firstChild:获取第一个子节点
+        firstElementChild:获取第一个元素子节点
+        lastChild：获取最后一个子节点
+        lastElementChild：获取最后一个元素子节点
+        previousSibling：获取上一个哥哥节点
+        previousElementSibling：获取上一个哥哥元素节点
+        nextSibling：获取下一个兄弟节点
+        nextElementSibling：获取下一个兄弟元素节点
+        parentNode：获取父级节点
+        */
+
+        /* 
+        动态操作dom
+        document.createElement('div');
+        document.createTextNode('111111');
+        父级.appendChild(节点)：往元素末尾插入节点
+        父元素.insertBefore(新的， 老的)
+        removeChild
+        replaceChild
+        元素.cloneNode(true/false)
+ 
+        setAttribute('key', value)
+        getAttribute('key')
+        removeAttribute('key')
+ 
+        classList.add()
+        classList.remove()
+        classList.replace(新，老)       
+        */
+
+        //let box = document.getElementById('box');
+        //    box.removeChild()
+
+        /* 
+            构造函数：
+            */
+
+        function Fn(name, age) {
+            /* 
+            形成私有作用域
+            形参赋值
+            变量提升
+            默认生成一个空对象(初始化一个实例对象)
+            让当前的this指向这个对象(指向当前实例)
+            代码执行
+            默认把当前实例return 出去
+            作用域是否销毁
+            */
+            this.name = name;
+            this.age = age;
+        }
+        Fn.prototype.say = function () {
+            console.log(this);
+        };
+        //let f = Fn() // 普通函数运行模式
+        //let f2 = new Fn('sss',23);
+        let f1 = new Fn('qinhao', 18) // 构造函数运行模式
+        console.log(f1.say());
+        Fn.prototype.say();
+        // {name:undefined,age:undefined}
+        // 在函数运行之前加上new，此时的函数就是构造函数运行模式，(Fn就是自定义类)
+        // f1是Fn的实例
+        // Fn是f1的所属类
+        // 实例是对象数据类型的，所以实例也叫实例化对象
+        // 类是函数数据类型的
+
+        /* 
+        普通函数和构造函数的区别：
+            1、运行上的区别
+                1、普通函数运行：形成私有作用域-->形参赋值-->变量提升-->代码执行-->作用域是否销毁
+                2、构造函数运行：形成私有作用域-->形参赋值-->变量提升-->默认生成空对象 -->让当前的this指向这个对象-->代码执行-->默认把这个对象return出去-->作用域是否销毁
+            2、函数执行上的区别：
+                1、构造函数执行前加new，如果不传实参，可以省略函数执行的小括号
+            3、如果我手动return一个基本值，对构造函数的返回值没有影响，如果手动return一个引用值，他会改变构造函数的返回值，(返回值已经不是当前的实例了)不要轻易去修改构造函数的return值
+        */
+
+        let ary = [1, 2, 3, 4];
+        //console.log(ary.splice(0,0,1));
+        ary[ary.length] = 5
+        console.log(ary);
+
+        let str = '1244323456543222';
+        console.log(str.split('').sort().join(''))
+    </script>
+</body>
+
+</html>

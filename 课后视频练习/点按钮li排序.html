@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    ul{
+        list-style: none;
+        width: 500px;
+        text-align: center;
+        font-size: 20px;
+        margin: 20px auto;
+    }
+    ul li{
+        line-height: 30px;
+        border: 1px solid red;
+    }
+    #btn{
+        margin-top: 20px;
+        display: block;
+        margin: 0 auto;
+    }
+    li:nth-child(odd){
+        background-color: lightcoral;
+    }
+    
+    
+    </style>
+</head>
+<body>
+    <ul id="box">
+        <li>34</li>
+        <li>23</li>
+        <li>12</li>
+        <li>3</li>
+        <li>78</li>
+        <li>56</li>
+    </ul>
+    <button id="btn">点击排序</button>
+
+    <script src="../2020-1-8 第二周 day03/utils.js"></script>
+    <script>
+    let box=document.getElementById('box');
+    let list=document.getElementsByTagName('li');
+    let btn=document.getElementById('btn');
+    list=utils.toArray(list);
+    //console.log(list);
+
+    let flag=-1;   
+    //利用自定义标识，把每次点击排序的结果改变
+    btn.onclick=function(){
+        flag*=-1;
+        list.sort((a,b)=>{
+           return (a.innerHTML-b.innerHTML)*flag;
+        })
+        //console.log(list);
+        //利用循环，把每一个li插入到box里边
+        for(var i=0;i<list.length;i++){
+            box.appendChild(list[i]);
+        }
+    }
+    
+    </script>
+</body>
+</html>

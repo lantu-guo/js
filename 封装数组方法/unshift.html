@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //封装数组方法-unshift，向数组开头增加一项，返回值是新数组的长度
+    let ary=[2,5,3];
+    Array.prototype.myUnshift=function(n){
+        this.length=this.length+1;    //[2,5,3,empty]
+        for(var i=this.length-1;i>=0;i--){
+            this[i]=this[i-1];   //索引i取的是前边那项的值   [empty,2,5,3]
+        }
+        this[0]=n;   //[n,2,5,3]
+        return this.length;
+    }
+    console.log(ary.myUnshift(2));
+    console.log(ary);
+    
+    
+    </script>
+</body>
+</html>

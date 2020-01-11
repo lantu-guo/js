@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>检测当前属性是否是自己的公有属性（封装方法）</title>
+</head>
+
+<body>
+    <script>
+        Object.prototype.hasPubProperty = function (value) {
+            //1、检测属性名的格式是否正确
+            let ary = ['number', 'string'];
+            //includes检测当前值在数组中有没有，如果有就返回true，没有就返回false
+            if (!ary.includes(typeof value)) {
+                return false;
+            }
+            //先用in检测一下是否是自己的属性，然后在检测一下是否是私有属性，私有属性取反就是公有属性
+            //this是当前的实例ary
+            let n = value in this;      //检测是自己的属性
+            let m = this.hasOwnProperty(value);    //检测是自己的私有属性
+            return n && !m;
+            // if (n === true && m !== true) {    //两边都成立才能进入条件里边
+            //     return true;      //返回的是公有属性
+            // }
+            // else {
+            //     return false;
+            // }
+        }
+        let ary = [1, 2, 3];
+        console.log(ary.hasPubProperty('pop'));
+
+    </script>
+</body>
+
+</html>

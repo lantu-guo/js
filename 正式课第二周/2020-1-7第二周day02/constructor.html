@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+        利用constructor实现数据类型检测
+        判断当前实例的constructor属性值是不是你预估的类
+        但是也有局限性
+        */
+        // function Fn(){
+
+        // }
+        // let f1=new Fn();
+        // console.log(f1.constructor===Fn);   //true
+
+        // let obj={}
+        // console.log(obj.constructor===Fn);    //false
+
+        // let ary=[1,2,3,4];
+        // Console.log(ary.constructor===Array);    //true
+
+
+
+        //function Fn() {
+
+        // }
+        // Fn.prototype = {};
+        // let f1 = new Fn();  
+        // console.log(f1.constructor === Fn) // false
+
+        let f1 = new Fn();
+        f1.constructor = 1; // 给当前实例增加私有属性
+        console.log(f1.constructor === Fn);
+
+
+
+    </script>
+</body>
+
+</html>

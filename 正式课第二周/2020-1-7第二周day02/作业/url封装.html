@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // let url = "locallhost?key1=val1&key2=val2&key3=val3";
+        // //String.prototype.urlParam
+        // function urlParam() {
+
+        //     let index = url.indexOf('?');
+        //     let value = url.substring(index + 1);   //'key1=val1&key2=val2&key3=val3'
+        //     let ary = value.split('&');    //["key1=val1", "key2=val2", "key3=val3"] 
+        //     let obj = {};
+        //     for (var i = 0; i < ary.length; i++) {
+        //         let item = ary[i].split('=');    //  ["key1", "val1"]
+
+        //         // console.log(item);
+        //         obj[item[0]] = item[1];
+        //         //console.log(obj)
+        //     }
+        //     return obj;
+        // }
+        // console.log(urlParam(url).key3);   //{key1: "val1", key2: "val2", key3: "val3"}
+        // console.log(url.getParam("key3"))
+
+        
+        //封装
+        String.prototype.queryURLParams = function () {
+            // this就是当前你要处理的字符串
+            let paramsIndex = this.indexOf('?');
+            let paramsStr = this.substring(paramsIndex + 1);
+            // 'name=qinHao&age=18'
+            let paramsAry = paramsStr.split('&');
+            // ["name=qinHao", "age=18"]
+            let obj = {};
+            for (var i = 0; i < paramsAry.length; i++) {
+                let cur = paramsAry[i] // "name=qinHao"
+                let itemAry = cur.split('='); // ['name', 'qinHao']
+                obj[itemAry[0]] = itemAry[1];
+            }
+            return obj;
+
+        }
+        let url = 'https://www.baidu.com?name=qinHao&age=18';
+        let res = url.queryURLParams();
+        console.log(res.name);
+
+
+
+    </script>
+</body>
+
+</html>

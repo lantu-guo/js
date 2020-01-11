@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>求平均数</title>
+</head>
+<body>
+    <script>
+     /*
+     需求：取一个数组的平均分
+     1、去掉最大值，去掉最小值（排序）
+     2、去平均值，而且保留两位小数
+
+     步骤：
+     1、排序
+     2、去掉开头和结尾
+     3、求和然后除以ary.length
+     4、利用toFixed保留两位小数
+     */ 
+    let ary=[1,3,5,7,4]  
+    function fn(ary){
+        ary.sort((a,b)=>b-a);
+        console.log(ary);
+        ary.pop();
+        ary.shift();
+        console.log(ary);
+        // let tatol=null;
+        // for(var i=0;i<ary.length;i++){                
+        //     tatol+=ary[i];        
+        // }
+        // //console.log(tatol);
+        // tatol=(tatol/ary.length).toFixed(2);
+        // return tatol;
+
+        //第二种方法
+        //console.log((eval(ary.join('+'))/ary.length).toFixed(2));
+        return (eval(ary.join('+'))/ary.length).toFixed(2);
+    }
+    console.log(fn(ary));
+
+
+    </script>
+</body>
+</html>

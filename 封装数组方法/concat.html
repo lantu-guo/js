@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //数组方法--concat，数组的拼接，返回值是拼接后的新数组，原数组不变
+    
+    Array.prototype.myConcat=function(){
+        let newAry=[];
+        for(var i=0;i<this.length;i++){
+            newAry.push(this[i]);
+        }
+        // console.log(newAry);  //[1, 2, 3]
+        for(var i=0;i<arguments.length;i++){
+            if(!(arguments[i] instanceof Array)){      
+                newAry[newAry.length]=arguments[i];
+                
+            }  
+            for(var j=0;j<arguments[i].length;j++) {
+                newAry[newAry.length]=arguments[i][j];
+            }
+        }
+        //ary.length--;
+        return newAry;
+    }
+    let ary=[1,2,3];
+    
+    console.log(ary.myConcat([1,2]));    //[1, 2, 3, 1, 2]
+    console.log(ary);  //[1,2,3]
+
+
+
+    // let ary=[1,2,3,];
+    // console.log(ary.concat(1));   //[1, 2, 3, 1]
+    // console.log(ary);    // [1, 2, 3]
+    // console.log(ary.concat([1,2,3]));    // [1, 2, 3, 1, 2, 3]
+    // console.log(ary.concat({name:1}));    //[1, 2, 3, {…}]
+    // console.log(ary.concat(function(){}))     //[1, 2, 3, ƒ]
+    
+    </script>
+</body>
+</html>

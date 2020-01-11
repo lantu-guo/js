@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>作业</title>
+</head>
+
+<body>
+    <script>
+        // function Fn() {
+        //     let a = 1;
+        //     this.a = a;
+        // }
+        // Fn.prototype.say = function () {
+        //     this.a = 2;
+        // };
+        // Fn.prototype = new Fn;
+        // let f1 = new Fn;
+
+        // Fn.prototype.b = function () {
+        //     this.a = 3;
+        // };
+        // console.log(f1.a);    //1
+        // console.log(f1.prototype);    //undefined
+        // console.log(f1.b);    //f{this.a=3}
+        // console.log(f1.hasOwnProperty('b'));    //false
+        // console.log('b' in f1);     //true
+        // console.log(f1.constructor == Fn);    //true
+
+
+        // function fun() {
+        //     this.a = 0;
+        //     this.b = function () {
+        //         alert(this.a);
+        //     }
+        // }
+        // fun.prototype = {
+        //     b: function () {
+        //         this.a = 20;
+        //         alert(this.a);
+        //     },
+        //     c: function () {
+        //         this.a = 30;
+        //         alert(this.a)
+        //     }
+        // }
+        // var my_fun = new fun();
+        // my_fun.b();   //0
+        // my_fun.c();    //30
+
+
+
+
+        // function C1(name) {
+        //     if (name) {
+        //         this.name = name;
+        //     }
+        // }
+        // function C2(name) {
+        //     this.name = name;
+        // }
+        // function C3(name) {
+        //     this.name = name || 'join';
+        // }
+        // C1.prototype.name = 'Tom';
+        // C2.prototype.name = 'Tom';
+        // C3.prototype.name = 'Tom';
+        // alert((new C1().name) + (new C2().name) + (new C3().name));
+        //'Tomundefinedjoin'
+
+
+
+        function Fn(num) {
+            this.x = this.y = num;
+        }
+        Fn.prototype = {
+            x: 20,
+            sum: function () {
+                console.log(this.x + this.y);
+            }
+        };
+        let f = new Fn(10);
+        console.log(f.sum === Fn.prototype.sum);    //true
+        f.sum();       //10+10   20
+        Fn.prototype.sum();    //NaN
+        console.log(f.constructor);   //Object类  原型重定向，没有constructor，按照原型链找到object
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

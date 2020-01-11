@@ -1,0 +1,81 @@
+html,body{
+    width: 100%;
+    height: 100%;
+    background-color: linen;
+}
+#header{
+    width: 1200px;
+    height: 40px;
+    margin: 30px auto;
+    background-color: lightskyblue;
+    line-height: 40px;
+    box-sizing: border-box;
+    padding: 0 10px;
+    font-size: 15px;
+}
+#header span { 
+    color: white;
+    margin-right: 20px;
+}
+#header a {
+    color: white;
+    margin-right: 15px;
+    position: relative;
+}
+#header a:hover{
+    color: red;
+}
+/* 设置箭头 */
+#header a i{
+    width: 0;
+    height: 0;
+    border: 4px solid transparent;
+    position: absolute;
+    /* top: 15px; */
+}
+#header a i.up{
+    border-bottom-color: #fff;
+    top: 2px;
+}
+#header a i.down{
+    border-top-color: #fff;
+    top: 13px;
+}
+/* js增加样式名 */
+#header a i.up.bj{
+    border-bottom-color: red;
+}
+#header a i.down.bj{
+    border-top-color: red;
+}
+/* 商品列表 */
+#cardBox{
+    display: flex;
+    width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+#cardBox li{
+    width: 24%;
+    /* border: 1px solid red; */
+    background-color: #fff;
+    box-shadow: 2px 2px 2px lightgray;
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+    box-sizing: border-box;
+    margin-right: 1%;
+}
+#cardBox li img{
+    display: block;
+    width: 150px;
+    height: 150px;
+    margin:10px auto;
+}
+#cardBox li span{
+    display: block;
+    text-align: center;
+    margin-bottom: 5px;
+    font-size: 15px;
+    font-weight: bold;
+    color: red;
+}

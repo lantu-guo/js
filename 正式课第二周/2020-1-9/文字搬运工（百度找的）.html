@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            background: #C0C0C0;
+        }
+        #wrapper {
+            margin: 50px auto;
+            width: 800px;
+            background: #fff;
+            overflow: hidden;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        textarea {
+            background: #EFEFD6;
+            border: none;
+            width: 320px;
+            height: 220px;
+            float: left;
+            padding: 10px;
+            font-size: 18px;
+        }
+        #right {
+            width: 320px;
+            height: 220px;
+            background: #63EFF7;
+            float: right;
+            padding: 10px;
+        }
+        #center {
+            float: left;
+            width: 120px;
+            text-align: center;
+        }
+        #center a {
+            display: block;
+            color: #fff;
+            background: #F76300;
+            text-decoration: none;
+            padding: 10px;
+            margin: 0 5px;
+            font-family: '微软雅黑';
+        }
+        #center p {
+            font-size: 20px;
+            font-family: '微软雅黑';
+        }
+    </style>
+    <script>
+        window.onload=function () {
+            var left=document.getElementById('left');
+            var a=document.getElementsByTagName('a')[0];
+            var right=document.getElementById('right');
+            var all=document.getElementById('all');
+            var current=document.getElementById('current');
+            a.onclick=function () {
+                if(left.value == ''){
+                    alert('请在左侧输入一些文字后再点击按钮');
+                    return;
+                }
+                var str=left.value;
+                var arrays=str.split("");
+                var num=0;
+                var newStr="";
+                all.innerHTML=arrays.length;
+                var timer=setInterval(function () {
+                    var substr = left.value;
+                    left.value = substr.substring(1);
+                    if(current.innerHTML==arrays.length)
+                    {
+                        clearInterval(timer);
+                    }
+                    else {
+                        newStr+=arrays[num];
+                        num++;
+                    }
+                    right.innerHTML=newStr;
+                    current.innerHTML=num;
+                },100)
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="wrapper">
+    <textarea id="left"></textarea>
+    <div id="center">
+        <a href="javascript:">把文字右移</a>
+        <p><span id="all">0</span></p>
+    </div>
+    <div id="right"></div>
+</div>
+</body>
+</html>

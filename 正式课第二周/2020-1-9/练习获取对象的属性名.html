@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //1、把以下对象的属性名放到一个数组里[n,x,a,b,c,d,e,f,m]
+        /*var obj = {
+            n: {
+                x:1,
+                a: [
+                    { b: 1, c: [{ d: 1 }, { e: 1 }] },
+                    { f: 1 },3
+                ]
+            },
+            m:0
+        };    
+        */
+
+        let obj = {
+            n: {
+                x: 1,
+                a: [
+                    {
+                        b: 1,
+                        c: [{ d: 1 }, { e: 1 }]
+                    }, { f: 1 }, 3
+                ]
+            },
+            m: 0
+        };
+        
+        let ary = [];
+        for (var key in obj) {
+            if (!(typeof obj[key] == 'object')) {
+                ary.push(key);     //[m]
+            }
+            else {
+                ary.push(key);     //[n,m]
+                for (var value in obj[key]) {
+                    ary.push(value);   //[n,m,x,a]
+
+                    if (obj[key][value] instanceof Array) {
+                        for (var i = 0; i < obj[key][value].length; i++) {
+
+                            let cur = obj[key][value][i];
+                            //console.log(cur);
+
+                            for (var a in cur) {
+                                if (!(typeof cur == 'object')) {
+                                    ary.push(a);
+                                }
+                                else {
+                                    ary.push(a); //["n", "x", "a", "b", "c", "f", "m"]
+
+                                    for (var i = 0; i < cur[a].length; i++) {
+                                        let item = cur[a][i];
+                                        //console.log(item)
+                                        for (var b in item) {
+                                            if (!(typeof item == 'object')) {
+                                                ary.push(b);
+                                            }
+                                            else {
+                                                ary.push(b);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                        }
+                    }
+
+                }
+            }
+        }
+        console.log(ary);   //["n", "x", "a", "b", "c", "d", "e", "m"]
+
+        
+
+
+    </script>
+</body>
+
+</html>

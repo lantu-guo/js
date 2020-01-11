@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // function Fn(n,m){
+        //         n = n|| 0;
+        //         m = m || 0;
+        //         this.m = m;
+        //         this.n = n;
+        //     }
+
+        //     Fn.prototype.say = function(){
+        //         console.log('say')
+        //     }
+        //     Fn.eat = function(){
+        //         console.log('eat')
+        //     }
+        
+        //改写成class方式
+            class Fn{
+                constructor(n,m){
+                    n=n||0;
+                    m = m || 0;
+                    this.m = m;
+                    this.n = n;
+                }
+                say(){
+                     console.log('say')
+                }
+               static eat=function(){
+                    console.log('eat')
+                }
+            }
+        
+        
+    </script>
+</body>
+</html>

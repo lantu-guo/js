@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>点击按钮实现li排序功能</title>
+    <style>
+    * {
+            padding: 0;
+            margin: 0;
+        }
+        ul {
+            list-style: none;
+            width: 500px;
+            border: 1px solid red;
+            margin:  20px auto;
+            text-align: center;
+        }
+        li {
+            line-height: 30px;
+            font-size: 20px;
+            border-bottom:1px solid black
+        }
+        button {
+            display: block;
+            margin: 10px auto;
+        }
+
+    </style>
+</head>
+<body>
+    <ul id='box'>
+        <li>15</li>
+        <li>75</li>
+        <li>34</li>
+        <li>23</li>
+        <li>12</li>
+    </ul>
+    <button id='btn'>排序</button>
+
+    <script src="utils.js"></script>
+
+    <script>
+    //DOM的映射：页面中的标签和js中的DOM的元素对象存在一一映射关系，只要操作js中的DOM元素，那页面中的标签也会跟着改变
+    //DOM的回流：如果页面中的标签改变大小、删除标签，那其他标签的位置发生变化，浏览器得重新计算每一个标签的位置，这样会非常耗性能，导致页面加载速度变慢。这就是DOM的回流。
+    //DOM的重绘：如果你要改变一个元素的背景颜色、字体大小、透明度之类的属性，不会引起DOM的回流，但是浏览器把这个元素进行重新的绘制。这就是DOM的重绘。
+    
+    let btn=document.getElementById('btn');
+    let list=document.getElementsByTagName('li');
+    let box=document.getElementById('box');
+    //console.log(btn,list)
+    list=utils.toArray(list);   //类数组转数组
+    //console.log(list);     // [li, li, li, li, li]
+
+    let flag=-1;    //创建一个标识
+    btn.onclick=function (){
+        flag*=-1;     //每点击一次就让flag乘-1
+        list.sort((a,b)=>{
+           // console.log(a,b);   代表li的每一个
+           return (a.innerHTML-b.innerHTML)*flag;    //排序   （a-b）*1=>a-b   
+        })
+        //console.log(list);
+
+        //第一种方式：
+        // for(var i=0;i<list.length;i++){
+        //     box.appendChild(list[i])    //list[i]代表每一个DOM元素，插入到box元素中
+        //     //插入的时候，浏览器内部先看li里有没有相应的li（这个数），如果有就取过来放在li的最下边，然后循环li，依次把排序的li放在下边，直到li显示排序的结构，如果li有，就不会重新创建，直接取过来放在下边
+        // }
+
+         //第二种方法：
+         //你先把这些DOM元素存储在js的文档碎片中，最后把这个文档碎片插入到页面中
+         let  ss=document.createDocumentFragment();    //创建文档碎片
+         for(var i=0;i<list.length;i++){
+            ss.appendChild(list[i])    
+          }
+          box.appendChild(ss);      //把文档碎片插入到box里
+    }
+
+
+    
+    </script>
+
+</body>
+</html>

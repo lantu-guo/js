@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // function fn(){
+        //     console.log(this);
+        // }
+        // let obj={name:1};
+        // obj.fn=fn;
+        // obj.fn();
+        // delete obj.fn;   //在把obj里的fn删除（真删除）
+
+
+
+
+        function myCall(context, ...arg) {
+            // context->obj   this->fn
+            context = context || window;  //如果不传参或者是undefined或null，那context都是window
+            context.fn = this; // 把fn增加到obj中
+
+            let res = null;   //创建变量准备接受fn的返回值
+            res = context.fn(...arg); // 让fn执行
+
+            delete context.fn; // 在obj中删除fn
+
+            return res;    //把返回值return出去
+        }
+        Function.prototype.myCall = myCall;   //把封装的myCall方法放在Function上的原型上，作为公有属性都可调用
+
+        function fn(n, m, f) {
+            console.log(this, n, m, f);
+            return 123456;
+        }
+        let obj = {
+            name: 1
+        };
+        console.log(fn.myCall(obj, 1, 2, 3));
+        console.log(fn(1, 2, 3));
+
+    </script>
+</body>
+
+</html>

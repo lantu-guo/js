@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //1、把以下对象的属性名放到一个数组里[n,x,a,b,c,d,e,f,m]
+        /*var obj = {
+            n: {
+                x:1,
+                a: [
+                    { b: 1, c: [{ d: 1 }, { e: 1 }] },
+                    { f: 1 },3
+                ]
+            },
+            m:0
+        };    
+        */
+
+        let obj = {
+            n: {
+                x: 1,
+                a: [
+                    {
+                        b: 1,
+                        c: [{ d: 1 }, { e: 1 }]
+                    }, { f: 1 }, 3
+                ]
+            },
+            m: 0
+        };
+
+        
+        let ary = [];
+        function getKeys(obj) {
+            if(obj instanceof Array){
+                for (var i = 0; i < obj.length; i++) {
+                    push(obj[i]);
+                }
+            }
+            else {
+                push(obj);
+            }
+            return ary;
+        }
+        console.log(getKeys(obj));   //["n", "x", "a", "b", "c", "d", "e", "f", "m"]
+
+
+        function push(item) {
+            for(var key in item){
+                ary.push(key);
+                if(typeof item[key] === 'object'){
+                    getKeys(item[key]);
+                }
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

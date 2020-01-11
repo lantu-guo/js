@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+     function Fn(name, age){
+           this.name = name;
+           this.age = age;
+        }
+        Fn.prototype.say=function(){
+            console.log(this);
+        };
+        
+        let f1 = new Fn('qinhao',18) 
+        console.log(f1.say());
+        //Fn.prototype.say();   
+        console.log(f1.__proto__.__proto__.__proto__)   //null
+    </script>
+</body>
+</html>

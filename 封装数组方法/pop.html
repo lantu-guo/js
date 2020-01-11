@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数组pop自己封装方法</title>
+</head>
+<body>
+    <script>
+     //封装数组方法--pop，删除数组末尾一项，返回值是删除那一项，新数组改变
+    let ary=[1,2,3,4];
+    Array.prototype.myPop=function(){
+        let last=this[this.length-1];
+        this.length--;
+        return last;
+    }
+    console.log(ary.myPop());    //4
+    console.log(ary);    //[1,2,3]
+
+
+   
+    
+    </script>
+</body>
+</html>

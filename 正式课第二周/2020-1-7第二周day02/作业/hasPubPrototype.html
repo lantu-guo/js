@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>封装公有属性检测</title>
+</head>
+
+<body>
+    <script>
+        Object.prototype.hasPubPrototype = function (value) {
+            let ary = ['number', 'string'];
+            if (!ary.includes(typeof value)) {
+                return false;
+            }
+            let n = value in this;
+            let m = this.hasOwnProperty(value);
+            return n && !m;
+            // if (n === true && m !== true) {
+            //     return true;
+            // }
+            // else {
+            //     return false;
+            // }
+
+        }
+
+        let ary = [1, 2, 4];
+        console.log(ary.hasPubPrototype('push'));
+
+    </script>
+</body>
+
+</html>

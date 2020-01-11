@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>原型练习题</title>
+</head>
+
+<body>
+    <script>
+        //1、
+        // function Fn(x, y) {
+        //     this.x = x;
+        //     this.y = y;
+        //     this.getX = function () {
+        //         console.log(this.x);
+        //     }
+        // }
+        // Fn.prototype.getX = function () {
+        //     console.log(this.x);
+        // }
+        // Fn.prototype.getY = function () {
+        //     console.log(this.y);
+        // }
+
+        // var f1 = new Fn(100, 200);
+        // f1.__proto__.a = 300;
+        // var f2 = new Fn(100, 200);
+
+
+        // console.log(f1.getX == f2.getX);   //false   不是一个堆内存
+        // console.log(f1.getY == f2.getY);    //true
+        // console.log(f1.x == f2.x);   //100==100   true
+        // console.log(Fn.prototype.getX === f1.getX);   //false
+        // console.log(Fn.prototype.getX === f1.__proto__.getX);   //true
+        // f1.getX();     //f1.x=100
+        // Fn.prototype.getX();      //Fn.x=x   undefined
+        // f2.__proto__.getX();      //f2.x=100     undefined
+        // Fn.prototype.getY();      //Fn.y=y    undefined
+        // console.log(f1.a);       //300
+        // console.log(f1.toString);     //object.toString=f
+
+
+        // function c1(name){
+        //     if(name){
+        //         this.name=name;
+        //     }
+        // }
+        // function c2(name){
+        //     this.name=name;
+        // }
+        // function c3(name){
+        //     this.name=name||'join';
+        // }
+        // c1.prototype.name='Tom';
+        // c2.prototype.name='Tom';
+        // c3.prototype.name='name';
+        
+        // alert((new c1().name)+(new c2().name)+(new c3().name));
+
+
+        //2、
+        function Fn(x, y) {
+            this.x = x;
+            this.y = y;
+            this.getX = function () {
+                console.log(this.x);
+            }
+        }
+        Fn.prototype.getX = function () {
+            return this
+        }
+        Fn.prototype.getY = function () {
+            console.log(this.z);
+        };
+        var f1 = new Fn(300, 200);
+        var f2 = new Fn(100, 200);
+        f1.__proto__.x = 300;
+        f1.__proto__.__proto__.z = 315;
+        f2.r = 300;
+        f1.x = "恭喜发财"
+        f1.__proto__.eat = function () {
+            return this.z;
+        };
+
+        console.log(Fn.prototype.getX().x === f2.r);   //原型.x===f2.r   300===300   true
+        console.log(f1.z);     //object.z=315
+        console.log(Fn.prototype.__proto__.__proto__);      //null
+        console.log(f2.eat());    //this.z=f2.z=315
+        console.log(Fn.prototype.getY());    //this.z=object.z=315   undefined（函数的返回值，没有return就是undefined）
+        f1.getX()     //this.x=f1.x='恭喜发财' 
+        console.log(f1.getX());    //undefined
+
+    </script>
+</body>
+
+</html>
